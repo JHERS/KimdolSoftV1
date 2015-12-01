@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication3.Models
+namespace KimdolSoft.Models
 {
     public class detalleCompraMetaData
     {

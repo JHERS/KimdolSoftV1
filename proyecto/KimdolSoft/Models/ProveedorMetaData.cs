@@ -9,7 +9,7 @@ namespace KimdolSoft.Models
 {
     public class ProveedorMetaData
     {
-        [Display(Name = "Id proveedor")]
+        [Display(Name = "NIT - Documento")]
         [Required]
         [MaxLength(20)]
         [Remote("validacionProveedor", "proveedors")]
