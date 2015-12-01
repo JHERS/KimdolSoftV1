@@ -23,10 +23,7 @@
                     <thead>
                         <tr class="active">
                             <th>
-                                Documento
-                            </th>
-                            <th>
-                                Tipo Documento
+                                ID
                             </th>
                             <th>
                                 Primer Nombre
@@ -63,15 +60,9 @@
                     </thead>
 
                     <tr>
-
                         <td>
                             @Html.DisplayFor(model => model.idCliente)
                         </td>
-
-                        <td>
-                            @Html.DisplayFor(model => model.tipoDocumento)
-                        </td>
-
                         <td>
                             @Html.DisplayFor(model => model.primerNombre)
                         </td>
@@ -118,6 +109,7 @@
         </div>
     </div>
     <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idCliente }) |
         @Html.ActionLink("Regresar", "Index")
     </p>
 </div>

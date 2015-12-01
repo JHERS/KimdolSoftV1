@@ -13,24 +13,24 @@ namespace KimdolSoft.Models
 
         [Display(Name = "* Primer Nombre: ")]
         [Required]
-        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^([a-z A-Z]+)$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public string primerNombre { get; set; }
 
         [Display(Name = "  Segundo Nombre: ")]
         [MaxLength(20)]
-        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^([a-z A-Z]+)$", ErrorMessage = "Solo se permiten letras")]
         public string segundoNombre { get; set; }
 
         [Display(Name = "* Primer Apellido: ")]
         [Required]
-        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^([a-z A-Z]+)$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public string primerApellido { get; set; }
 
         [Display(Name = "  Segundo Apellido: ")]
         [MaxLength(20)]
-        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^([a-z A-Z]+)$", ErrorMessage = "Solo se permiten letras")]
         public string segundoApellido { get; set; }
 
         [Display(Name = "  Telefono: ")]
@@ -56,7 +56,7 @@ namespace KimdolSoft.Models
 
         [Display(Name = "* Barrio: ")]
         [Required]
-        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^[A-Z a-z]*$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(50)]
         public string barrio { get; set; }
 

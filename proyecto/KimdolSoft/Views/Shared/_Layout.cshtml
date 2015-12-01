@@ -5,23 +5,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - KimdolSoft</title>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <link href="~/Content/Css/estilos.css" rel="stylesheet" />
-
-
+    @*<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/responsive.dataTables.min.css" rel="stylesheet" />*@
+    @Styles.Render("~/datatable/css")
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/css/select2")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
+ 
+
 </head>
 <body>
     <div class="navbar navbar-header navbar-fixed-top">
 
         <div id="barraAzul"></div>
 
-        <nav class="navbar navbar-default" >
+        <nav class="navbar navbar-default">
             @*<div class="container">*@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -45,14 +47,14 @@
                         <a class="dropdown-toggle" data-toggle="dropdown">Movimientos<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-level">
                             <li class="dropdown-submenu">
-                                <a class="dropdown-toggle" data-toggle="dropdown">Registrar</b></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown">Registrar</a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Ventas", "Create", "movimientoes")</li>
                                     <li>@Html.ActionLink("Pedidos", "Create", "movimientoes")</li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-toggle" data-toggle="dropdown" >Consultar</a>
+                                <a class="dropdown-toggle" data-toggle="dropdown">Consultar</a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Ventas", "Index", "movimientoes")</li>
                                     <li>@Html.ActionLink("Pedidos", "Index", "movimientoes")</li>
@@ -72,8 +74,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Compras<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Registrar", "Create", "detallecompras")</li>
-                            <li>@Html.ActionLink("Consultar", "Index", "detallecompras")</li>
+                            <li>@Html.ActionLink("Registrar", "Create", "compras")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "compras")</li>
                         </ul>
                     </li>
 
@@ -82,7 +84,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Registrar", "Create", "productoes")</li>
                             <li>@Html.ActionLink("Consultar", "Index", "productoes")</li>
-                            <li>@Html.ActionLink("Descripciones", "CreateDescripcion", "descripcion")</li>
+                            <li>@Html.ActionLink("Descripciones", "Create", "productoes")</li>
                         </ul>
                     </li>
 
@@ -110,7 +112,7 @@
                             <li>@Html.ActionLink("Listar Inventario", "Create", "productoes")</li>
                         </ul>
                     </li>
-                    
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -130,11 +132,11 @@
             <p>&copy;KimdolSoft - Distribuidora Heve</p>
         </footer>
     </div>
-
     
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/scriptsJquery")
-    @Scripts.Render("~/scripts/select2")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")  
+    @Scripts.Render("~/datatable/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -4,81 +4,77 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+   
 
-<h2>Index</h2>
+<br /><br /><br /><br /><br /><br /><br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div class="table-responsive">
-    <table data-toggle="table"
-           data-query-params="queryParams"
-           data-search="true"
-           data-height="300">
+@if (@ViewBag.mensaje == null)
+{
+
+}
+else
+{
+    <div class="alert alert-success">
+        @ViewBag.mensaje
+    </div>
+
+}
+<div >
+    <p align="right">
+        @Html.ActionLink("Registrar empleado", "Create")
+    </p>
+    @*<div class="table-responsive" >*@
+    <table id="example" class="display responsive nowrap" cellspacing="0" >
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.tipoDocumento)
+                <th data-sortable="true">
+                    Documento
+                </th>
+                <th data-sortable="true">
+                    Primer Nombre
+                </th>
+                <th data-sortable="true">
+                    Primer Apellido
+                </th>
+                <th data-sortable="true">
+                    Rol
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.primerNombre)
+                    Correo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.segundoNombre)
+                    Telefono
+                </th>
+                <th data-sortable="true">
+                    Estado
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.primerApellido)
+                    Ver
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.segundoApellido)
+                    Editar
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.rol)
+                    Eliminar
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.direccion)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.telefono)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.celular)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.estado)
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
 
         @foreach (var item in Model)
-        {
+            {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.tipoDocumento)
+                    @Html.DisplayFor(modelItem => item.idEmpleado)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.primerNombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.segundoNombre)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.primerApellido)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.segundoApellido)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.rol)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.direccion)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.email)
@@ -87,37 +83,47 @@
                     @Html.DisplayFor(modelItem => item.telefono)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.celular)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.estado)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idEmpleado })
+                    <a href="@Url.Action("Details", new { id = item.idEmpleado})">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <span class="sr-only"></span>
+                    </a>
+
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.idEmpleado })
+                    <a href="@Url.Action("Edit", new { id = item.idEmpleado})">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only"></span>
+                    </a>
+
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idEmpleado })
+                    <a href="@Url.Action("Delete", new { id = item.idEmpleado})">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        <span class="sr-only"></span>
+                    </a>
+
                 </td>
             </tr>
         }
 
     </table>
-</div>
 
-@section Scripts {
+    @*</div>*@
+
+@section Scripts { 
     <script>
-    function queryParams() {
-        return {
-            type: 'owner',
-            sort: 'updated',
-            direction: 'desc',
-            per_page: 100,
-            page: 1
-        };
-    }
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "src" : "~/Scripts/DataTables/lenguaje.json"
+                }
+            });
+        });
     </script>
+    
+
 
 }

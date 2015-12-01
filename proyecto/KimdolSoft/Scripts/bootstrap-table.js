@@ -419,7 +419,7 @@
             return 'Search';
         },
         formatNoMatches: function () {
-            return 'No matching records found';
+            return 'No se encontraron registros';
         },
         formatPaginationSwitch: function () {
             return 'Hide/Show pagination';

@@ -16,22 +16,18 @@
         <div class="panel-body">
             <div>
                 <table data-toggle="table"
-                    data-query-params="queryParams"
-                      
+                       data-query-params="queryParams"
                        class="table table-hover">
                     <thead>
                         <tr class="active">
                             <th>
-                                Documento
-                            </th>
-                            <th>
-                                Tipo Documento
+                                ID
                             </th>
                             <th>
                                 Primer Nombre
                             </th>
                             <th>
-                                Segundo nombre 
+                                Segundo nombre
                             </th>
                             <th>
                                 Primer Apellido
@@ -57,18 +53,13 @@
                             <th>
                                 Estado
                             </th>
-                           
+
                         </tr>
                     </thead>
 
-                    <tr>      
-
+                    <tr>
                         <td>
                             @Html.DisplayFor(model => model.idCliente)
-                        </td>
-                                          
-                        <td>
-                            @Html.DisplayFor(model => model.tipoDocumento)
                         </td>
 
                         <td>
@@ -106,7 +97,7 @@
                         <td>
                             @Html.DisplayFor(model => model.barrio)
                         </td>
-                        
+
                         <td>
                             @Html.DisplayFor(model => model.estado)
                         </td>
@@ -116,7 +107,7 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-
+                    <br />
                     <div class="form-actions no-color">
                         <input type="submit" value="Eliminar" class="btn btn-default" />
                     </div>

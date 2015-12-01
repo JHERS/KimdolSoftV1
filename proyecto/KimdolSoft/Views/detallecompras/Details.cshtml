@@ -5,92 +5,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Details</h2>
 
+<div>
+    <h4>detallecompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
 
-<br /><br /><br /><br /><br /><br /><br />
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
 
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"> Información de la compra </h3>
-        </div>
-        <div class="panel-body">
-            <div>
+        <dt>
+            @Html.DisplayNameFor(model => model.valorUnitario)
+        </dt>
 
-                <table class="table table-bordered">
-                    <tr class="active">
-                        <th>
-                            NIT - Documento
-                        </th>
+        <dd>
+            @Html.DisplayFor(model => model.valorUnitario)
+        </dd>
 
-                        <th>
-                            Empresa
-                        </th>
-                        <th>
-                            Fecha compra
-                        </th>
-                        <th>
-                            Valor compra
-                        </th>
-                        <th>
-                            Descuento 
-                        </th>
-                        <th>
-                            Estado
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.idProveedor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.proveedor.empresa)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.fechaCompra)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.valorCompra)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.descuento)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.estado)
-                        </td>
-                    </tr>
-                </table>
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.idProveedor)
+        </dt>
 
-                <table class="table table-bordered">
-                    <tr class="active">
-                        <th>
-                            Producto
-                        </th>
+        <dd>
+            @Html.DisplayFor(model => model.compra.idProveedor)
+        </dd>
 
-                        <th>
-                            Cantidad
-                        </th>
-                        <th>
-                            Valor unitario
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.producto.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.cantidad)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.valorUnitario)
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <p>
-        @Html.ActionLink("Regresar", "Index")
-    </p>
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto.nombre)
+        </dd>
+
+    </dl>
 </div>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDetalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

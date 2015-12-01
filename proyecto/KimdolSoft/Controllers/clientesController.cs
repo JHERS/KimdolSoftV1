@@ -17,7 +17,10 @@ namespace KimdolSoft.Controllers
         // GET: clientes
         public ActionResult Index()
         {
+            var mensaje = TempData["message"];
+            ViewBag.mensaje = mensaje;
             return View(db.cliente.ToList());
+
         }
 
         // GET: clientes/Details/5
@@ -52,6 +55,8 @@ namespace KimdolSoft.Controllers
             {
                 db.cliente.Add(cliente);
                 db.SaveChanges();
+                TempData["Message"] = "Cliente registrado con exito";
+
                 return RedirectToAction("Index");
             }
 
@@ -78,12 +83,13 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "primerNombre,segundoNombre,primerApellido,segundoApellido,telefono,celular,email,direccion,barrio,estado")] cliente cliente)
+        public ActionResult Edit([Bind(Include = "idCliente,primerNombre,segundoNombre,primerApellido,segundoApellido,telefono,celular,email,direccion,barrio,estado")] cliente cliente)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = "Cliente Modificado Exitosamente";
                 return RedirectToAction("Index");
             }
             return View(cliente);
@@ -112,6 +118,7 @@ namespace KimdolSoft.Controllers
             cliente cliente = db.cliente.Find(id);
             db.cliente.Remove(cliente);
             db.SaveChanges();
+            TempData["Message"] = "Cliente Eliminado Exitosamente";
             return RedirectToAction("Index");
         }
 

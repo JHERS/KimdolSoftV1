@@ -17,6 +17,8 @@ namespace KimdolSoft.Controllers
         // GET: empleadoes
         public ActionResult Index()
         {
+            var mensaje = TempData["message"];
+            ViewBag.mensaje = mensaje;
             return View(db.empleado.ToList());
         }
 
@@ -63,6 +65,7 @@ namespace KimdolSoft.Controllers
             {
                 db.empleado.Add(empleado);
                 db.SaveChanges();
+                TempData["Message"] = "Empleado Registrado Correctamente";
                 return RedirectToAction("Index");
             }
 
@@ -95,6 +98,7 @@ namespace KimdolSoft.Controllers
             {
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = "Empleado Modificado Correctamente";
                 return RedirectToAction("Index");
             }
             return View(empleado);
@@ -123,6 +127,7 @@ namespace KimdolSoft.Controllers
             empleado empleado = db.empleado.Find(id);
             db.empleado.Remove(empleado);
             db.SaveChanges();
+            TempData["Message"] = "Empleado Eliminado Correctamente";
             return RedirectToAction("Index");
         }
 
@@ -134,5 +139,16 @@ namespace KimdolSoft.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult validacionEmpleado(string idEmpleado)
+        {
+            var obj = db.empleado.Where(x => x.idEmpleado == idEmpleado).FirstOrDefault();
+            if (obj == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json("El documento de identidad del empleado ya se encuentra registrado", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

@@ -1,220 +1,67 @@
-﻿@model KimdolSoft.Models.Compra_Detalle
+﻿@model KimdolSoft.Models.detallecompra
 
-    @{
-        ViewBag.Title = "Edit";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <br /><br /><br /><br /><br /><br /><br />
+<h2>Edit</h2>
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div>
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Compra </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div>
-                            <div class="container">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"> Información del proveedor </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.compra.idProveedor, htmlAttributes: new { @class = "control-label col-xs-2" })
-                                            <div class="col-xs-4">
-                                                @Html.DropDownListFor(model => model.compra.idProveedor, new SelectList(ViewBag.idProveedor, "idProveedor", "empresa"), ViewData["IdProveedorSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.compra.idProveedor, "", new { @class = "text-danger"})
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"> Información de la compra </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="form-horizontal">
-                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>detallecompra</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idDetalle)
 
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.compra.fechaCompra, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="col-xs-4 ">
-                                                    @Html.EditorFor(model => model.compra.fechaCompra, new { htmlAttributes = new { @class = "form-control", @id = "calendario", @placeholder = "yyyy-MM-dd", @readonly = "readonly" } })
-
-                                                    @Html.ValidationMessageFor(model => model.compra.fechaCompra, "", new { @class = "text-danger" })
-                                                </div>
-                                                @Html.LabelFor(model => model.compra.valorCompra, htmlAttributes: new { @class = "control-label col-xs-2" })
-                                                <div class="col-xs-4">
-                                                    @Html.EditorFor(model => model.compra.valorCompra, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.compra.valorCompra, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.compra.descuento, htmlAttributes: new { @class = "control-label col-xs-2" })
-                                                <div class="col-xs-4">
-                                                    @Html.EditorFor(model => model.compra.descuento, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.compra.descuento, "", new { @class = "text-danger" })
-                                                </div>
-                                                @Html.LabelFor(model => model.compra.estado, htmlAttributes: new { @class = "control-label col-xs-2" })
-                                                <div class="col-xs-4">
-                                                    @Html.DropDownListFor(model => model.compra.estado,
-                                    new List<SelectListItem> {
-                                    new SelectListItem { Text="ENTREGADA"},
-                                    new SelectListItem { Text="ANULADA"}
-                                    },
-                                    new { @class = "myselect form-control"})
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"> Detalle de compra </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-horizontal">
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.dtcompra.idProducto, "* Producto", htmlAttributes: new { @class = "control-label col-md-4"})
-
-                                                <div class="col-md-8">
-                                                    @Html.DropDownListFor(model => model.dtcompra.idProducto, new SelectList(ViewBag.idProducto, "idProducto", "nombre"), ViewData["IdProductoSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control"})
-                                                    @Html.ValidationMessageFor(model => model.dtcompra.idProducto, "", new { @class = "text-danger", @readonly = "readonly" })
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.dtcompra.cantidad, htmlAttributes: new { @class = "control-label col-md-4" })
-                                                <div class="col-md-8">
-                                                    @Html.EditorFor(model => model.dtcompra.cantidad, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.dtcompra.cantidad, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.dtcompra.valorUnitario, htmlAttributes: new { @class = "control-label col-md-4" })
-                                                <div class="col-md-8">
-                                                    @Html.EditorFor(model => model.dtcompra.valorUnitario, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.dtcompra.valorUnitario, "", new { @class = "text-danger" })
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-offset-4 col-md-8">
-                                                        <button type="button" class="btn btn-success">Agregar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <br /><br /><br /><br />
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th class="active">
-                                                    Producto
-                                                </th>
-                                                <th class="active">
-                                                    Cantidad
-                                                </th>
-                                                <th class="active">
-                                                    Valor unitario
-                                                </th>
-                                                <th class="active">
-                                                    Valor Compra
-                                                </th>
-                                                <th class="active">
-                                                    Acción
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-0 col-md-10">
-                                <input type="submit" value="Registar" class="btn btn-default" />
-                                <input type="submit" value="Cancelar" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.idProducto, "idProducto", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idProducto", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idProducto, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.idCompra, "idCompra", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idCompra", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idCompra, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cantidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    }
-    <script>
-        $(function () {
-            $("#calendario").datepicker({ dateFormat: 'yy-mm-dd' });
-            $("#compra_idProveedor").select2();
-            $("#dtcompra_idProducto").select2();
-        });
-    </script>
+        <div class="form-group">
+            @Html.LabelFor(model => model.valorUnitario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.valorUnitario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.valorUnitario, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
-        <script>
-            $(document).ready(function () {
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
-                $("#dtcompra_idProducto").change(function () {
-
-                    var seleccionado = $(this).val();
-                    var txtPrecio = $("#dtcompra_valorUnitario");
-
-                    $.ajax({
-                        method: "GET",
-                        url: "/detallecompras/ObtenerPrecio",
-                        data: { id: seleccionado }
-                    })
-                    .done(function (precio) {
-                        txtPrecio.val(precio);
-                    })
-                    .fail(function (msg) {
-                        console.log("Error: " + msg);
-                    });
-
-
-                });
-
-            });
-        </script>
-
-    }
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
