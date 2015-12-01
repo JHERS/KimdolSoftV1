@@ -4,12 +4,18 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication3.Models
+namespace KimdolSoft.Models
 {
     public class ComprasMetaData
     {
+
+        [Display(Name = " * Proveedor")]
+        [Required(ErrorMessage = "Seleccione una ópción")]
+        public string idProveedor { get; set; }
+
         [Display(Name = "* Fecha compra: ")]
-        [Required]    
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime fechaCompra { get; set; }
 
         [Display(Name = "  Estado: ")]
@@ -17,10 +23,12 @@ namespace WebApplication3.Models
         public string estado { get; set; }
 
         [Display(Name = "  Descuento: ")]
+        [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
         public int descuento { get; set; }
 
         [Display(Name = "*  Valor compra: ")]
         [Required]
+        [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
         public int valorCompra { get; set; }
 
     }

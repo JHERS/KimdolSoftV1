@@ -5,77 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br /><br /><br /><br /><br /><br /><br />
 <div class="table-responsive">
-    <table data-toggle="table"
-           data-query-params="queryParams"
-           data-search="true"
-           data-height="300">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.cantidad)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.valorUnitario)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.compra.idProveedor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.producto.nombre)
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
+    <p align="right">
 
-        @foreach (var item in Model)
+        @Html.ActionLink("Registrar compra", "Create")
+    </p>
+    <div class="container">
+        @if (@ViewBag.mensaje != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cantidad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.valorUnitario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.compra.idProveedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.producto.nombre)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idDetalle })
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.idDetalle })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idDetalle })
-                </td>
-            </tr>
+            <div class="alert alert-success">@ViewBag.mensaje</div>
+        }
+        else
+        {
+
         }
 
-    </table>
+        <div class="table-responsive">
+            <table data-toggle="table"
+                   data-query-params="queryParams"
+                   data-search="true">
+                <thead>
+                    <tr>
+                        <th> NIT - Documento</th>
+                        <th> Proveedor</th>
+                        <th>Fecha Compra</th>
+                        <th>Estado</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+
+                </thead>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.compra.idProveedor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.compra.proveedor.empresa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.compra.fechaCompra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.compra.estado)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.idDetalle})">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <span class="sr-only"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.idDetalle})">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <span class="sr-only"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Delete", new { id = item.idDetalle})">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <span class="sr-only"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     <script>
-    function queryParams() {
-        return {
-            type: 'owner',
-            sort: 'updated',
-            direction: 'desc',
-            per_page: 100,
-            page: 1
-        };
-    }
+        function queryParams() {
+            return {
+                type: 'owner',
+                sort: 'updated',
+                direction: 'desc',
+                per_page: 100,
+                page: 1
+            };
+        }
     </script>
-
 }

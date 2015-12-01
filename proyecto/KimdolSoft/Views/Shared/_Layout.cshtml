@@ -12,6 +12,7 @@
 
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/select2")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
 </head>
@@ -71,8 +72,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Compras<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Registrar", "Create", "compras")</li>
-                            <li>@Html.ActionLink("Consultar", "Index", "compras")</li>
+                            <li>@Html.ActionLink("Registrar", "Create", "detallecompras")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "detallecompras")</li>
                         </ul>
                     </li>
 
@@ -81,7 +82,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Registrar", "Create", "productoes")</li>
                             <li>@Html.ActionLink("Consultar", "Index", "productoes")</li>
-                            <li>@Html.ActionLink("Descripciones", "Create", "productoes")</li>
+                            <li>@Html.ActionLink("Descripciones", "CreateDescripcion", "descripcion")</li>
                         </ul>
                     </li>
 
@@ -132,6 +133,8 @@
 
     
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scriptsJquery")
+    @Scripts.Render("~/scripts/select2")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -56,7 +56,7 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa, nombreVendedor, apellidoVendedor, telefonoVendedor,estado")] proveedor proveedor)
+        public ActionResult Create([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa,estado")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa, nombreVendedor, apellidoVendedor, telefonoVendedor,estado")] proveedor proveedor)
+        public ActionResult Edit([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa,estado")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {

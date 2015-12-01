@@ -39,7 +39,10 @@ namespace KimdolSoft.Controllers
         // GET: compras/Create
         public ActionResult Create()
         {
-            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor");
+            var Mensaje = TempData["Message"];
+            ViewBag.mensaje = Mensaje;
+            ViewData["IdProveedorSeleccionado"] = String.Empty;
+            ViewBag.idProveedor = db.proveedor.ToList();
             return View();
         }
 
@@ -54,10 +57,12 @@ namespace KimdolSoft.Controllers
             {
                 db.compra.Add(compra);
                 db.SaveChanges();
+                TempData["Message"] = "Registro Exítoso";
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", compra.idProveedor);
+            ViewData["IdProveedorSeleccionado"] = compra.idProveedor;
+            ViewBag.idProveedor = db.proveedor.ToList();
             return View(compra);
         }
 
@@ -73,7 +78,7 @@ namespace KimdolSoft.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", compra.idProveedor);
+            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "empresa", compra.idProveedor);
             return View(compra);
         }
 
@@ -90,7 +95,7 @@ namespace KimdolSoft.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", compra.idProveedor);
+            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "empresa", compra.idProveedor);
             return View(compra);
         }
 

@@ -44,21 +44,6 @@ namespace KimdolSoft.Models
         [Required]
         [MaxLength(10)]
         public string estado { get; set; }
-
-        [Display(Name = "Nombre")]
-        [Required]
-        [MaxLength(20)]
-        public string nombreVendedor { get; set; }
-
-        [Display(Name = "Apellido")]
-        [Required]
-        [MaxLength(20)]
-        public string apellidoVendedor { get; set; }
-
-        [Display(Name = "Teléfono")]
-        [Required]
-        [MaxLength(10)]
-        public string telefonoVendedor { get; set; }
     }
 
     [MetadataType(typeof(ProveedorMetaData))]
