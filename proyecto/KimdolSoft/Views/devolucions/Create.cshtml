@@ -1,0 +1,62 @@
+﻿@model KimdolSoft.Models.devolucion
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Información de la  devolución </h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.idProveedor, "idProveedor", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("idProveedor", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.idProveedor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.fechaDevolucion, htmlAttributes: new { @class = "control-label col-xs-2" })
+                        <div class="col-xs-4">
+                            @Html.EditorFor(model => model.fechaDevolucion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.fechaDevolucion, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-xs-2" })
+                        <div class="col-xs-4">
+                            @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Registrar" class="btn btn-default" />
+                            <input type="submit" value="Cancelar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

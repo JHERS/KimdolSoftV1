@@ -1,0 +1,83 @@
+﻿@model KimdolSoft.Models.producto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presentacion.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presentacion.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoproducto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoproducto.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unidad.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unidad.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProducto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

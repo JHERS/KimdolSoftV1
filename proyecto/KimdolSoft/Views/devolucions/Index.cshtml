@@ -1,0 +1,75 @@
+﻿@model IEnumerable<KimdolSoft.Models.devolucion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table data-toggle="table"
+           data-query-params="queryParams"
+           data-search="true"
+           data-height="300">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaDevolucion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.proveedor.tipoDocumento)
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaDevolucion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.proveedor.tipoDocumento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idDevolucion })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.idDevolucion })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idDevolucion })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+    </script>
+
+}

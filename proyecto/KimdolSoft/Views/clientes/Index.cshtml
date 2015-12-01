@@ -1,0 +1,128 @@
+﻿@model IEnumerable<KimdolSoft.Models.cliente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+<br /><br /><br /><br /><br /><br /><br />
+<div class="container">
+<div class="alert alert-success">
+    @ViewBag.Mensaje
+</div>
+
+<div class="table-responsive">
+    <p align="right">
+
+        @Html.ActionLink("Registrar Cliente", "Create")
+    </p>
+    <table data-toggle="table"
+           data-query-params="queryParams"
+           data-search="true"
+           class="table table-hover">
+        <thead>
+            <tr class="active">
+                <th>
+                    Documento
+                </th>
+                <th data-sortable="true">
+                    Primer Nombre
+                </th>
+                <th>
+                    Primer Apellido
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Dirección
+                </th>
+                <th>
+                    Barrio
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Ver
+                </th>
+                <th>
+                    Editar
+                </th>
+                <th>
+                    Eliminar
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.barrio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.idCliente})">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <span class="sr-only"></span>
+                    </a>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.idCliente})*@
+                    @*<span class="glyphicon glyphicon-search"></span>*@
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.idCliente})">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only"></span>
+                    </a>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.idCliente })*@
+                    @*<span class="glyphicon glyphicon-pencil"></span>*@
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new { id = item.idCliente})">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        <span class="sr-only"></span>
+                    </a>
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.idCliente })*@
+                    @*<span class="glyphicon glyphicon-remove"></span>*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    </div>
+@section Scripts {
+    <script>
+        function queryParams() {
+            return {
+                type: 'owner',
+                sort: 'updated',
+                direction: 'desc',
+                per_page: 100,
+                page: 1
+            };
+        }
+    </script>
+
+}

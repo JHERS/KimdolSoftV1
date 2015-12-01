@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="95a064f7704349cd90455695b5c4bb50" Name="Diagram1">
+        <EntityTypeShape EntityType="kimdolsoftModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.abono" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.AspNetRoles" Width="1.5" PointX="8.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.AspNetUserClaims" Width="1.5" PointX="13.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.AspNetUserLogins" Width="1.5" PointX="13.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.AspNetUsers" Width="1.5" PointX="11" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.cliente" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.compra" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.detallecompra" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.detalledevolucion" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.detallemovimiento" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.devolucion" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.empleado" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.existencia" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.marca" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.movimiento" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.presentacion" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.producto" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.proveedor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.tipomovimiento" Width="1.5" PointX="0.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.tipoproducto" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kimdolsoftModel.unidad" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="kimdolsoftModel.fk_abono_movimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.fk_movimiento_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.compra_fk_Compra_Proveedor1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detallecompra_fk_Producto_has_Compra_Compra1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detallecompra_fk_Producto_has_Compra_Producto1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detalledevolucion_fk_detalle_devolucion_devolucion" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detalledevolucion_fk_Producto_has_Devolución_Producto1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detallemovimiento_fk_Producto_has_Venta_Producto1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.detallemovimiento_fk_Producto_has_Venta_Venta1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.devolucion_fk_devolucion_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.movimiento_fk_Venta_Empleado1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.existencia_fk_Existencia_Producto1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.producto_fk_Producto_Marca1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.movimiento_fk_movimiento_Tipo_Movimiento1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.producto_fk_producto_presentacion" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.producto_fk_Producto_Tipo_producto1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.producto_fk_Producto_Unidad1" ManuallyRouted="false" />
+        <AssociationConnector Association="kimdolsoftModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,105 @@
+﻿@using KimdolSoft.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewBag.Title - KimdolSfot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Css/estilos.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body id="bodyLogin">
+
+    <div align="center">
+        <div class="container well" id="sha">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="~/Content/Imagenes/Logotipo.jpg" id="avatar" />
+                    <br /><br />
+                </div>
+            </div>
+            <section>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-xs-4 control-label" })*@
+                        <div class="col-md-offset-0">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Correo Electronico " })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Password, new { @class = "col-xs-4 control-label" })*@
+                            <div class="col-md-offset-0">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Contraseña " })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-group">
+                                <div class="col-md-offset-0 col-xs-10" align="center">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-1 col-XS-10">
+                                <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                        <div>
+                            @*función de Registrar como nuevo usuario*@
+
+                            @*<p>
+                                    @Html.ActionLink("Registrar un nuevo empleado", "Register")
+                                </p>*@
+
+                            @*función de restablecimiento de contraseña*@
+                            <p>
+                                @Html.ActionLink("Recuperar contraseña", "ForgotPassword")
+                            </p>
+                        </div>
+
+                }
+            </section>
+
+        </div>
+    </div>
+
+    <footer align="center">
+        <p>&copy;KimdolSfot - Distribuidora Heve</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+
+</body>
+</html>

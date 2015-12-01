@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KimdolSoft.Models.cuentausuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preguntaSeguridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.respuestaSeguridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleado.idEmpleado)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preguntaSeguridad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.respuestaSeguridad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.idEmpleado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idCuentaUsuario })
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.idCuentaUsuario })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idCuentaUsuario })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,127 @@
+﻿@model IEnumerable<KimdolSoft.Models.producto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+
+<p align="right">
+    @Html.ActionLink("Registrar producto", "Create")
+</p>
+<div class="table-responsive">
+    <table data-toggle="table"
+           data-query-params="queryParams"
+           data-search="true">
+        <thead>
+            <tr>
+                <th>
+                    Identificador
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Marca
+                </th>
+                <th>
+                    Presentación
+                </th>
+                <th>
+                    Tipo Producto
+                </th>
+                <th>
+                    Unidad
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Ver
+                </th>
+                <th>
+                    Editar
+                </th>
+                <th>
+                    Eliminar
+                </th>
+            </tr>
+        </thead>
+
+       @foreach (var item in Model)
+       {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.presentacion.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoproducto.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unidad.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+
+
+            <td>
+                <a href="@Url.Action("Details", new { id = item.idProducto})">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <span class="sr-only"></span>
+                </a>
+                @*@Html.ActionLink("Details", "Details", new { id = item.idProducto})*@
+                @*<span class="glyphicon glyphicon-search"></span>*@
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.idProducto})">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only"></span>
+                </a>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.idProducto })*@
+                @*<span class="glyphicon glyphicon-pencil"></span>*@
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = item.idProducto})">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    <span class="sr-only"></span>
+                </a>
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.idProducto })*@
+                @*<span class="glyphicon glyphicon-remove"></span>*@
+            </td>
+        </tr>
+       }
+
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+    </script>
+
+}

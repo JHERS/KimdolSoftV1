@@ -1,0 +1,43 @@
+﻿@model KimdolSoft.Models.devolucion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>devolucion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaDevolucion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaDevolucion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proveedor.tipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proveedor.tipoDocumento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDevolucion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

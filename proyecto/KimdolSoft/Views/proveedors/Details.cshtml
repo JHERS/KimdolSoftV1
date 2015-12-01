@@ -1,0 +1,74 @@
+﻿@model KimdolSoft.Models.proveedor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Información del proveedor </h3>
+        </div>
+        <div class="panel-body">
+            <div>
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tipoDocumento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.tipoDocumento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.empresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.empresa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.direccionEmpresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.direccionEmpresa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.emailEmpresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.emailEmpresa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.telefonoEmpresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.telefonoEmpresa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.estado)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+</div>

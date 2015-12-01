@@ -1,0 +1,65 @@
+﻿@model KimdolSoft.Models.cuentausuario
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cuentausuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contrasena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contrasena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preguntaSeguridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preguntaSeguridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.respuestaSeguridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respuestaSeguridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.idEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.idEmpleado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

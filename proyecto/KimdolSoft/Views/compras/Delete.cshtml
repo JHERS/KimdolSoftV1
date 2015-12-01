@@ -1,0 +1,79 @@
+﻿@model KimdolSoft.Models.compra
+
+
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<<br /><br /><br /><br /><br /><br /><br />
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Eliminar compra </h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fechaCompra)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.fechaCompra)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.descuento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.descuento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.valorCompra)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.valorCompra)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.estado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.proveedor.tipoDocumento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.proveedor.tipoDocumento)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Eliminar" class="btn btn-default" />
+
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div>
+        @Html.ActionLink("Regresar", "Index")
+    </div>
+</div>
+

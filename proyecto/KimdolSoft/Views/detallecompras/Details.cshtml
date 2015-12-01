@@ -1,0 +1,51 @@
+﻿@model KimdolSoft.Models.detallecompra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>detallecompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valorUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valorUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.idProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compra.idProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDetalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

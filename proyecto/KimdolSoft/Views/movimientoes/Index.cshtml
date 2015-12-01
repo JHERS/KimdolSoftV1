@@ -1,0 +1,99 @@
+﻿@model IEnumerable<KimdolSoft.Models.movimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table data-toggle="table"
+           data-query-params="queryParams"
+           data-search="true"
+           data-height="300">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaVenta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaEntrega)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.descuento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.valorTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cliente.idCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.empleado.idEmpleado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tipomovimiento.nombre)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descuento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valorTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cliente.tipoDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empleado.tipoDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipomovimiento.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idMovimiento }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idMovimiento }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idMovimiento })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+    </script>
+
+}

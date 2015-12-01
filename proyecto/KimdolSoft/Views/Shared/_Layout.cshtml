@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - KimdolSoft</title>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/Css/estilos.css" rel="stylesheet" />
+
+
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="navbar navbar-header navbar-fixed-top">
+
+        <div id="barraAzul"></div>
+
+        <nav class="navbar navbar-default" >
+            @*<div class="container">*@
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "clientes")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "clientes")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Movimientos<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Registrar</b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Ventas", "Create", "movimientoes")</li>
+                                    <li>@Html.ActionLink("Pedidos", "Create", "movimientoes")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-toggle" data-toggle="dropdown" >Consultar</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Ventas", "Index", "movimientoes")</li>
+                                    <li>@Html.ActionLink("Pedidos", "Index", "movimientoes")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Proveedores<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "proveedors")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "proveedors")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Compras<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "compras")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "compras")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Productos<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "productoes")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "productoes")</li>
+                            <li>@Html.ActionLink("Descripciones", "Create", "productoes")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Devoluciones<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "devolucions")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "devolucions")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Empleados<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar", "Create", "empleadoes")</li>
+                            <li>@Html.ActionLink("Consultar", "Index", "empleadoes")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Informes<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Precio", "Create", "productoes")</li>
+                            <li>@Html.ActionLink("Precios - Costos", "Create", "productoes")</li>
+                            <li>@Html.ActionLink("Listar Inventario", "Create", "productoes")</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            @*</div>*@
+        </nav>
+
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer align="center">
+            <p>&copy;KimdolSoft - Distribuidora Heve</p>
+        </footer>
+    </div>
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

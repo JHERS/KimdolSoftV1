@@ -1,0 +1,123 @@
+﻿@model IEnumerable<KimdolSoft.Models.empleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table data-toggle="table"
+           data-query-params="queryParams"
+           data-search="true"
+           data-height="300">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tipoDocumento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.primerNombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.segundoNombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.primerApellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.segundoApellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rol)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.celular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado)
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.segundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.segundoApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idEmpleado })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.idEmpleado })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idEmpleado })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+    </script>
+
+}
