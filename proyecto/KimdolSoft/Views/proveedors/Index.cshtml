@@ -3,119 +3,105 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <br /><br /><br /><br /><br /><br /><br />
 
-<div class="table-responsive">
-    <table data-toggle="table"
-           data-query-params="queryParams"
-           data-search="true">
-        <thead>
-            <tr class="active">
-                <th>
-                    Documento
-                </th>
-                <th>
-                    Tipo de documento
-                </th>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Dirección
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Telefono
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th>
-                    Ver
-                </th>
-                <th>
-                    Editar
-                </th>
-                <th>
-                    Eliminar
-                </th>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@*<div class="table-responsive">*@
+<table data-toggle="table" class="display nowrap table table-striped table-bordered" cellspacing="0" id="tabla">
+    <thead>
+        <tr>
+            <th>
+                NIT - Documento
+            </th>
 
-            </tr>
-        </thead>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Teléfono
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Ver
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Eliminar
+            </th>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idProveedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tipoDocumento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.empresa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.direccionEmpresa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emailEmpresa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.telefonoEmpresa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.estado)
-                </td>
+        </tr>
+    </thead>
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccionEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonoEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
 
-                <td>
-                    <a href="@Url.Action("Details", new { id = item.idProveedor})">
-                        <i class="glyphicon glyphicon-search"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    @*@Html.ActionLink("Details", "Details", new { id = item.idProveedor})*@
-                    @*<span class="glyphicon glyphicon-search"></span>*@
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", new { id = item.idProveedor})">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.idProveedor })*@
-                    @*<span class="glyphicon glyphicon-pencil"></span>*@
-                </td>
-                <td>
-                    <a href="@Url.Action("Delete", new { id = item.idProveedor})">
-                        <i class="glyphicon glyphicon-remove"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.idProveedor })*@
-                    @*<span class="glyphicon glyphicon-remove"></span>*@
-                </td>
+            <td>
+                <a href="@Url.Action("Details", new { id = item.idProveedor})">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <span class="sr-only"></span>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.idProveedor})">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only"></span>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = item.idProveedor})">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    <span class="sr-only"></span>
+                </a>
+            </td>
 
 
-            </tr>
-        }
+        </tr>
+    }
 
-    </table>
-</div>
+</table>
+@*</div>*@
 
 @section Scripts {
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
     <script>
-    function queryParams() {
-        return {
-            type: 'owner',
-            sort: 'updated',
-            direction: 'desc',
-            per_page: 100,
-            page: 1
-        };
-    }
+        $(document).ready(function () {
+            $('#tabla').DataTable();
+        });
     </script>
 
 }

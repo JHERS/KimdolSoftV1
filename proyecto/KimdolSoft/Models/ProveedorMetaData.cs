@@ -12,7 +12,7 @@ namespace KimdolSoft.Models
         [Display(Name = "Id proveedor")]
         [Required]
         [MaxLength(20)]
-        [Remote("validacionProveedor", "proveedors")]
+        [Remote("ValidarIdProveedor", "proveedors", AdditionalFields ="idProveedor", ErrorMessage ="El proveedor ya se encuentra registrado")]
         public string idProveedor { get; set; }
 
         [Display(Name = "Tipo documento")]
@@ -44,6 +44,21 @@ namespace KimdolSoft.Models
         [Required]
         [MaxLength(10)]
         public string estado { get; set; }
+
+        [Display(Name = "Nombre")]
+        [Required]
+        [MaxLength(20)]
+        public string nombreVendedor { get; set; }
+
+        [Display(Name = "Apellido")]
+        [Required]
+        [MaxLength(20)]
+        public string apellidoVendedor { get; set; }
+
+        [Display(Name = "Teléfono")]
+        [Required]
+        [MaxLength(10)]
+        public string telefonoVendedor { get; set; }
     }
 
     [MetadataType(typeof(ProveedorMetaData))]

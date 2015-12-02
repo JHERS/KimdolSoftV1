@@ -14,6 +14,27 @@ namespace KimdolSoft.Controllers
     {
         private kimdolsoftEntities db = new kimdolsoftEntities();
 
+        public JsonResult ValidarIdProveedor(proveedor proveedor)
+        {
+            return ValidarProveedor(proveedor.idProveedor)
+                ? Json(true, JsonRequestBehavior.AllowGet)
+                : Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public bool ValidarProveedor(string idProveedor)
+        {
+            if (idProveedor == "")
+            {
+                var proveedor = db.proveedor.Where(x => x.idProveedor != idProveedor).FirstOrDefault();
+                return proveedor == null;
+            }
+            else
+            {
+                var proveedor = db.proveedor.Where(x => x.idProveedor == idProveedor).FirstOrDefault();
+                return proveedor == null;
+            }
+        }
+
         // GET: proveedors
         public ActionResult Index()
         {
@@ -22,15 +43,7 @@ namespace KimdolSoft.Controllers
 
         // GET: proveedors/Details/5
 
-        public JsonResult validacionProveedor(string idProveedor)
-        {
-            var obj = db.proveedor.Where(x => x.idProveedor == idProveedor).FirstOrDefault();
-            if (obj == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            return Json("El documento de identidad del proveedor ya se encuentra registrado", JsonRequestBehavior.AllowGet);
-        }
+        
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -56,7 +69,7 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa,estado")] proveedor proveedor)
+        public ActionResult Create([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa, nombreVendedor, apellidoVendedor, telefonoVendedor,estado")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +101,7 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa,estado")] proveedor proveedor)
+        public ActionResult Edit([Bind(Include = "idProveedor,tipoDocumento,empresa,direccionEmpresa,emailEmpresa,telefonoEmpresa, nombreVendedor, apellidoVendedor, telefonoVendedor,estado")] proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
