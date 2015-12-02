@@ -140,14 +140,25 @@ namespace KimdolSoft.Controllers
             base.Dispose(disposing);
         }
 
-        public JsonResult validacionEmpleado(string idEmpleado)
+        public JsonResult empleado(empleado empleado)
         {
-            var obj = db.empleado.Where(x => x.idEmpleado == idEmpleado).FirstOrDefault();
-            if (obj == null)
+            return ValidacionEmpleado(empleado.idEmpleado)
+                ? Json(true, JsonRequestBehavior.AllowGet)
+                : Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public bool ValidacionEmpleado(string idEmpleado)
+        {
+            if (idEmpleado == null)
             {
-                return Json(true, JsonRequestBehavior.AllowGet);
+                var empleado= db.empleado.Where(x => x.idEmpleado == idEmpleado).FirstOrDefault();
+                return empleado == null;
             }
-            return Json("El documento de identidad del empleado ya se encuentra registrado", JsonRequestBehavior.AllowGet);
+            else
+            {
+                var empleado = db.empleado.Where(x => x.idEmpleado != idEmpleado).FirstOrDefault();
+                return empleado == null;
+            }
         }
 
     }
