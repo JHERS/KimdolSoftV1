@@ -16,7 +16,8 @@ namespace KimdolSoft.Models
         [Required]
         [MaxLength(12)]
         [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
-        [Remote("validacionEmpleado", "empleadoes")]
+        [Remote("ValidacionEmpleado", "empleadoes", AdditionalFields = "idEmpleado", ErrorMessage = "El empleado ya se encuentra registrado")]
+       
 
 
         public int idEmpleado { get; set; }

@@ -9,8 +9,6 @@ namespace KimdolSoft.Models
 {
     public class ClienteMetaData
     {
-      
-
         [Display(Name = "* Primer Nombre: ")]
         [Required]
         [RegularExpression("^([a-z A-Z]+)$", ErrorMessage = "Solo se permiten letras")]

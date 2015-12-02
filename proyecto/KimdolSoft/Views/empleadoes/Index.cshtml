@@ -25,7 +25,7 @@ else
         @Html.ActionLink("Registrar empleado", "Create")
     </p>
     @*<div class="table-responsive" >*@
-    <table id="example" class="display responsive nowrap" cellspacing="0" >
+    <table id="example"  class="display responsive" width="100%" >
         <thead>
             <tr>
                 <th data-sortable="true">
@@ -118,8 +118,8 @@ else
         $(document).ready(function () {
             $('#example').DataTable({
                 "language": {
-                    "Url" :"@Url.Content("~/Scripts/DataTables/lenguaje.json")";
-                }
+                    "url" : "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+        }
             });
         });
     </script>

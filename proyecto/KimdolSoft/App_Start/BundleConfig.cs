@@ -41,11 +41,7 @@ namespace KimdolSoft
                 "~/Content/DataTables/css/jquery.dataTables.min.css",
                 "~/Content/DataTables/css/responsive.dataTables.min.css"
                 ));
-
-            //"~/Content/DataTables/css/jquery.dataTables.min.css",
-            //"~/Content/DataTables/css/responsive.dataTables.min.css"
-
-
+            
             bundles.Add(new StyleBundle("~/Content/css/select2").Include(
                 "~/Content/Css/select2.min.css"));
 

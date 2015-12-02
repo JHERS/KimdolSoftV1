@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - KimdolSoft</title>
+    @Styles.Render("~/datatable/css")
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link href="~/Content/Css/estilos.css" rel="stylesheet" />
-
-
+    
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css/select2")
@@ -135,6 +135,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/scriptsJquery")
     @Scripts.Render("~/scripts/select2")
+    @Scripts.Render("~/datatable/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
