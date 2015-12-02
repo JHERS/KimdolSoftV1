@@ -173,6 +173,7 @@
     <Compile Include="Controllers\clientesController.cs" />
     <Compile Include="Controllers\comprasController.cs" />
     <Compile Include="Controllers\detallecomprasController.cs" />
+    <Compile Include="Controllers\detalledevolucionsController.cs" />
     <Compile Include="Controllers\devolucionsController.cs" />
     <Compile Include="Controllers\empleadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\devolucion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Devolucion_Detalle.cs" />
     <Compile Include="Models\empleado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -627,6 +629,11 @@
     <Content Include="Views\detallecompras\Details.cshtml" />
     <Content Include="Views\detallecompras\Edit.cshtml" />
     <Content Include="Views\detallecompras\Index.cshtml" />
+    <Content Include="Views\detalledevolucions\Create.cshtml" />
+    <Content Include="Views\detalledevolucions\Delete.cshtml" />
+    <Content Include="Views\detalledevolucions\Details.cshtml" />
+    <Content Include="Views\detalledevolucions\Edit.cshtml" />
+    <Content Include="Views\detalledevolucions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
