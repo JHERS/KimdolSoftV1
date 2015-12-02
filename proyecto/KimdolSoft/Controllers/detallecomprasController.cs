@@ -17,6 +17,8 @@ namespace KimdolSoft.Controllers
         // GET: detallecompras
         public ActionResult Index()
         {
+            var Mensaje = TempData["Message"];
+            ViewBag.mensaje = Mensaje;
             var detallecompra = db.detallecompra.Include(d => d.compra).Include(d => d.producto);
             return View(detallecompra.ToList());
         }
@@ -39,8 +41,6 @@ namespace KimdolSoft.Controllers
         // GET: detallecompras/Create
         public ActionResult Create()
         {
-            var Mensaje = TempData["Message"];
-            ViewBag.mensaje = Mensaje;
             ViewData["IdProductoSeleccionado"] = String.Empty;
             ViewData["IdProveedorSeleccionado"] = String.Empty;
             ViewBag.idProveedor = db.proveedor.ToList();
@@ -62,7 +62,7 @@ namespace KimdolSoft.Controllers
                 compraDetalle.dtcompra.idCompra = compraDetalle.compra.idCompra;
                 db.detallecompra.Add(compraDetalle.dtcompra);
                 db.SaveChanges();
-                TempData["Message"] = "Registro Exítoso";
+                TempData["Message"] = "Registro exítoso";
                 return RedirectToAction("Index");
             }
 
@@ -100,18 +100,37 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idDetalle,idProducto,idCompra,cantidad,valorUnitario")] detallecompra detallecompra)
+        //public ActionResult Edit([Bind(Prefix = "compra")] compra compra)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(compra).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        TempData["Message"] = "Registro editado exitosamente";
+        //        return RedirectToAction("Index");
+        //    }
+
+
+        //    ViewData["IdProveedorSeleccionado"] = compra.idProveedor;
+        //    ViewBag.idProveedor = db.proveedor.ToList();
+        //    ViewBag.idProducto = db.producto.ToList();
+        //    return View();
+        //}
+
+        public ActionResult Edit([Bind(Prefix = "compra")] compra compraDetalle)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detallecompra).State = EntityState.Modified;
+                db.Entry(compraDetalle).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = "Registro editado exitosamente";
                 return RedirectToAction("Index");
             }
-            ViewBag.idCompra = new SelectList(db.compra, "idCompra", "idProveedor", detallecompra.idCompra);
-            ViewBag.idProducto = new SelectList(db.producto, "idProducto", "nombre", detallecompra.idProducto);
-            return View(detallecompra);
+            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", compraDetalle);
+            return View(compraDetalle);
         }
+
+
 
         // GET: detallecompras/Delete/5
         public ActionResult Delete(int? id)
@@ -133,10 +152,15 @@ namespace KimdolSoft.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            detallecompra detallecompra = db.detallecompra.Find(id);
-            db.detallecompra.Remove(detallecompra);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (true)
+            {
+                detallecompra detallecompra = db.detallecompra.Find(id);
+                db.detallecompra.Remove(detallecompra);
+                db.SaveChanges();
+                TempData["Message"] = "Registro eliminado exitosamente";
+                return RedirectToAction("Index");
+            }
+            
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
