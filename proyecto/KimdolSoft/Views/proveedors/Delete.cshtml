@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 <div class="container">
     <div class="panel panel-default">
@@ -12,57 +12,77 @@
             <h3 class="panel-title"> Eliminar proveedor </h3>
         </div>
         <div class="panel-body">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.tipoDocumento)
-                </dt>
+            <table id="tabla" class="display responsive" width="100%">
+                <thead>
+                    <tr class="active">
+                        <th>
+                            Documento
+                        </th>
+                        <th>
+                            Tipo de documento
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Dirección
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Teléfono
+                        </th>
+                        <th>
+                            Nombre vendedor
+                        </th>
+                        <th>
+                            Apellido vendedor
+                        </th>
+                        <th>
+                            Teléfono vendedor
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                    </tr>
+                </thead>
 
-                <dd>
-                    @Html.DisplayFor(model => model.tipoDocumento)
-                </dd>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.idProveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.tipoDocumento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.empresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.direccionEmpresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.emailEmpresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.telefonoEmpresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.nombreVendedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.apellidoVendedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.telefonoVendedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.estado)
+                    </td>
+                </tr>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.empresa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.empresa)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.direccionEmpresa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.direccionEmpresa)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.emailEmpresa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.emailEmpresa)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.telefonoEmpresa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.telefonoEmpresa)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.estado)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.estado)
-                </dd>
-
-            </dl>
-
+            </table>
+            <br />
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -78,5 +98,20 @@
     </div>
 
 </div>
+@section Scripts {
 
+    <script>
+        $(document).ready(function () {
+            $('#tabla').DataTable({
+                "searching": false,
+                "paginate": false,
+                "info": false,
+                "language": {
+                    "url" : "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+            }
+        });
+        });
+    </script>
+
+}
 

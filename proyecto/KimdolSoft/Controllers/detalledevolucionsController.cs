@@ -39,8 +39,10 @@ namespace KimdolSoft.Controllers
         // GET: detalledevolucions/Create
         public ActionResult Create()
         {
-            ViewBag.idDevolucion = new SelectList(db.devolucion, "idDevolucion", "idProveedor");
-            ViewBag.idProducto = new SelectList(db.producto, "idProducto", "nombre");
+            ViewData["IdProductoSeleccionado"] = String.Empty;
+            ViewData["IdProveedorSeleccionado"] = String.Empty;
+            ViewBag.idProveedor = db.proveedor.ToList();
+            ViewBag.idProducto = db.producto.ToList();
             return View();
         }
 
@@ -60,7 +62,10 @@ namespace KimdolSoft.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewData["IdProductoSeleccionado"] = devolucionDetalle.dtDevolucion.idProducto;
+            ViewData["IdProveedorSeleccionado"] = devolucionDetalle.devolucion.idProveedor;
+            ViewBag.idProveedor = db.proveedor.ToList();
+            ViewBag.idProducto = db.producto.ToList();
             return RedirectToAction("Index");
         }
 
