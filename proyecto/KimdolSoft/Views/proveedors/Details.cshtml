@@ -5,13 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 
-<div class="table-responsive">
-    <table data-toggle="table"
-           data-query-params="queryParams"
-           data-search="true">
+<div class="container">
+    <table id="tabla" class="display responsive" width="100%">
         <thead>
             <tr class="active">
                 <th>
@@ -81,19 +79,31 @@
         </tr>
 
     </table>
+    <br />
 </div>
 
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idProveedor })
+    <br />
+    @Html.ActionLink("Regresar", "Index")
+
+</p>
+
+
+
 @section Scripts {
+
     <script>
-            function queryParams() {
-                return {
-                    type: 'owner',
-                    sort: 'updated',
-                    direction: 'desc',
-                    per_page: 100,
-                    page: 1
-                };
-            }
+        $(document).ready(function () {
+            $('#tabla').DataTable({
+                "searching": false,
+                "paginate": false,
+                "info": false,
+                "language": {
+                    "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                }
+            });
+        });
     </script>
 
 }

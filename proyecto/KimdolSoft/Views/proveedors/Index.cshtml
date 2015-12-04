@@ -6,12 +6,44 @@
 
 }
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
-<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-@*<div class="table-responsive">*@
-<table data-toggle="table" class="display nowrap table table-striped table-bordered" cellspacing="0" id="tabla">
+@if (ViewBag.mensajeRegistro == null)
+{
+
+}
+else
+{
+    <div class="alert alert-success">
+        @ViewBag.mensajeRegistro
+    </div>
+}
+
+
+@if (ViewBag.mensajeEditar == null)
+{
+
+}
+else
+{
+    <div class="alert alert-success">
+        @ViewBag.mensajeEditar
+    </div>
+}
+
+@if (ViewBag.mensajeEliminar == null)
+{
+
+}
+else
+{
+    <div class="alert alert-success">
+        @ViewBag.mensajeEliminar
+    </div>
+}
+
+
+<table id="tabla" class="display responsive" width="100%">
     <thead>
         <tr>
             <th>
@@ -95,12 +127,13 @@
 @*</div>*@
 
 @section Scripts {
-<script src="~/Scripts/jquery-2.1.4.min.js"></script>
-<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
-<script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tabla').DataTable();
+            $('#tabla').DataTable({
+                "language": {
+                    "url" : "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+            }
+        });
         });
     </script>
 

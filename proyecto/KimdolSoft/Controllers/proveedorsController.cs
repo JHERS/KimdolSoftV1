@@ -14,30 +14,16 @@ namespace KimdolSoft.Controllers
     {
         private kimdolsoftEntities db = new kimdolsoftEntities();
 
-        public JsonResult ValidarIdProveedor(proveedor proveedor)
-        {
-            return ValidarProveedor(proveedor.idProveedor)
-                ? Json(true, JsonRequestBehavior.AllowGet)
-                : Json(false, JsonRequestBehavior.AllowGet);
-        }
-
-        public bool ValidarProveedor(string idProveedor)
-        {
-            if (idProveedor == "")
-            {
-                var proveedor = db.proveedor.Where(x => x.idProveedor != idProveedor).FirstOrDefault();
-                return proveedor == null;
-            }
-            else
-            {
-                var proveedor = db.proveedor.Where(x => x.idProveedor == idProveedor).FirstOrDefault();
-                return proveedor == null;
-            }
-        }
-
+        
         // GET: proveedors
         public ActionResult Index()
         {
+            var mensajeRegistro = TempData["mensajeRegistro"];
+            ViewBag.mensajeRegistro = mensajeRegistro;
+            var mensajeEditar = TempData["mensajeEditar"];
+            ViewBag.mensajeEditar = mensajeEditar;
+            var mensajeEliminar = TempData["mensajeEliminar"];
+            ViewBag.mensajeEliminar = mensajeEliminar;
             return View(db.proveedor.ToList());
         }
 
@@ -73,9 +59,15 @@ namespace KimdolSoft.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.proveedor.Add(proveedor);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var existe = db.proveedor.Where(x => x.idProveedor == proveedor.idProveedor).FirstOrDefault();
+                if (existe == null)
+                {
+                    db.proveedor.Add(proveedor);
+                    db.SaveChanges();
+                    TempData["mensajeRegistro"] = "Registro exitoso";
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", "El proveedor ya se encuentra registrado");
             }
 
             return View(proveedor);
@@ -107,6 +99,7 @@ namespace KimdolSoft.Controllers
             {
                 db.Entry(proveedor).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["mensajeEditar"] = "Modificación exitosa";
                 return RedirectToAction("Index");
             }
             return View(proveedor);
@@ -135,6 +128,7 @@ namespace KimdolSoft.Controllers
             proveedor proveedor = db.proveedor.Find(id);
             db.proveedor.Remove(proveedor);
             db.SaveChanges();
+            TempData["mensajeEliminar"] = "Eliminación exitosa";
             return RedirectToAction("Index");
         }
 
