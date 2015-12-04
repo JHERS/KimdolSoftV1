@@ -24,15 +24,15 @@ namespace KimdolSoft.Controllers
 
         // GET: empleadoes/Details/5
 
-        public JsonResult validacionEmail(string email)
-        {
-            var obj = db.empleado.Where(x => x.email == email).FirstOrDefault();
-            if (obj == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            return Json("Ya existe el correo, debes ingresar otro", JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult validacionEmail(string email)
+        //{
+        //    var obj = db.empleado.Where(x => x.email == email).FirstOrDefault();
+        //    if (obj == null)
+        //    {
+        //        return Json(true, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return Json("Ya existe el correo, debes ingresar otro", JsonRequestBehavior.AllowGet);
+        //}
 
         public ActionResult Details(string id)
         {
@@ -63,12 +63,28 @@ namespace KimdolSoft.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.empleado.Add(empleado);
-                db.SaveChanges();
-                TempData["Message"] = "Empleado Registrado Correctamente";
-                return RedirectToAction("Index");
-            }
+                var existe = db.empleado.Where(x => x.idEmpleado == empleado.idEmpleado).FirstOrDefault();
+                if (existe == null)
+                {
 
+                    if (empleado.celular == null && empleado.telefono == null)
+                    {
+                        ModelState.AddModelError("", "Se debe ingresar:\nEl campo Telefono y/o celular");
+                    }
+                    else
+                    {
+                        db.empleado.Add(empleado);
+                        db.SaveChanges();
+                        TempData["Message"] = "Registro Exitoso";
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+
+                    ModelState.AddModelError("", "El documento ya existe en la base de datos");
+                }
+            }
             return View(empleado);
         }
 
@@ -96,10 +112,18 @@ namespace KimdolSoft.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
-                db.SaveChanges();
-                TempData["Message"] = "Empleado Modificado Correctamente";
-                return RedirectToAction("Index");
+                if (empleado.celular == null && empleado.telefono == null)
+                {
+                    ModelState.AddModelError("", "Se debe ingresar:\nEl campo Telefono y/o celular");
+                }
+                else
+                {
+                    db.Entry(empleado).State = EntityState.Modified;
+                    db.SaveChanges();
+                    TempData["Message"] = "Modificación Exitosa";
+                    return RedirectToAction("Index");
+                }
+
             }
             return View(empleado);
         }
@@ -127,7 +151,7 @@ namespace KimdolSoft.Controllers
             empleado empleado = db.empleado.Find(id);
             db.empleado.Remove(empleado);
             db.SaveChanges();
-            TempData["Message"] = "Empleado Eliminado Correctamente";
+            TempData["Message"] = "Eliminación Exitosa";
             return RedirectToAction("Index");
         }
 
@@ -140,26 +164,7 @@ namespace KimdolSoft.Controllers
             base.Dispose(disposing);
         }
 
-        public JsonResult empleado(empleado empleado)
-        {
-            return ValidacionEmpleado(empleado.idEmpleado)
-                ? Json(true, JsonRequestBehavior.AllowGet)
-                : Json(false, JsonRequestBehavior.AllowGet);
-        }
 
-        public bool ValidacionEmpleado(string idEmpleado)
-        {
-            if (idEmpleado == null)
-            {
-                var empleado= db.empleado.Where(x => x.idEmpleado == idEmpleado).FirstOrDefault();
-                return empleado == null;
-            }
-            else
-            {
-                var empleado = db.empleado.Where(x => x.idEmpleado != idEmpleado).FirstOrDefault();
-                return empleado == null;
-            }
-        }
 
     }
 }

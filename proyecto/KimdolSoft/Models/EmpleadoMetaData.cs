@@ -16,10 +16,7 @@ namespace KimdolSoft.Models
         [Required]
         [MaxLength(12)]
         [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
-        [Remote("ValidacionEmpleado", "empleadoes", AdditionalFields = "idEmpleado", ErrorMessage = "El empleado ya se encuentra registrado")]
-       
-
-
+    
         public int idEmpleado { get; set; }
 
         [Display(Name = "  Tipo Documento: ")]
@@ -28,23 +25,23 @@ namespace KimdolSoft.Models
 
         [Display(Name = "  * Primer Nombre: ")]
         [Required]
-        [RegularExpression("^[A-Z a-z]*$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^[A-Z a-z nÑóíáéú]*$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public int primerNombre { get; set; }
 
         [Display(Name = "  Segundo Nombre: ")]
-        [RegularExpression("^[A-Z a-z]*$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^[A-Z a-z ñÑóíáéú]*$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public int segundoNombre { get; set; }
 
         [Display(Name = "  * Primer Apellido: ")]
         [Required]
-        [RegularExpression("^[A-Z a-z]*$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^[A-Z a-z ñÑóíáéú]*$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public int primerApellido { get; set; }
 
         [Display(Name = "  Segundo Apellido: ")]
-        [RegularExpression("^[A-Z a-z]*$", ErrorMessage = "Solo se permiten letras")]
+        [RegularExpression("^[A-Z a-z ñÑ]*$", ErrorMessage = "Solo se permiten letras")]
         [MaxLength(20)]
         public int segundoApellido { get; set; }
 
@@ -59,18 +56,19 @@ namespace KimdolSoft.Models
 
         [Display(Name = " * Email: ")]
         [Required]
+        [EmailAddress(ErrorMessage ="Este campo debe tener formato correo")]
         [MaxLength(30)]
         public int email { get; set; }
 
         [Display(Name = "  Telefono: ")]
-        [MaxLength(7)]
-        [MinLength(7)]
+        [MinLength(7, ErrorMessage = "El campo teléfono debe tener mínimo 7 caracteres")]
+        [MaxLength(7, ErrorMessage = "El campo teléfono debe tener máximo 7 caracteres")]
         [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
         public int telefono { get; set; }
 
         [Display(Name = " Celular: ")]
-        [MaxLength(12)]
-        [MinLength(10)]
+        [MinLength(10, ErrorMessage = "El campo teléfono debe tener mínimo 10 caracteres")]
+        [MaxLength(12, ErrorMessage = "El campo teléfono debe tener máximo 12 caracteres")]
         [RegularExpression("^([0-9]+)$", ErrorMessage = "Solo se permiten números")]
         public int celular { get; set; }
 

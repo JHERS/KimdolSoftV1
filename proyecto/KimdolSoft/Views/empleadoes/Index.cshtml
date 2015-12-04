@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-   
 
-<br /><br /><br /><br /><br /><br /><br />
+
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 @if (@ViewBag.mensaje == null)
 {
@@ -20,12 +20,12 @@ else
     </div>
 
 }
-<div >
+<div>
     <p align="right">
         @Html.ActionLink("Registrar empleado", "Create")
     </p>
     @*<div class="table-responsive" >*@
-    <table id="example"  class="display responsive" width="100%" >
+    <table id="example" class="display responsive" width="100%">
         <thead>
             <tr>
                 <th data-sortable="true">
@@ -113,17 +113,16 @@ else
 
     @*</div>*@
 
-@section Scripts { 
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable({
-                "language": {
-                    "url" : "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
-        }
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "language": {
+                        "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                    }
+                });
             });
-        });
-    </script>
-    
+        </script>
 
-
-}
+    }
+</div>

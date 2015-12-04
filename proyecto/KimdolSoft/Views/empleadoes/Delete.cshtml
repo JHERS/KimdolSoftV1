@@ -5,96 +5,89 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"> Eliminar Empleado</h3>
         </div>
-        <div class="panel-body">
-            <div>
+        <table id="example" class="display responsive" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Documento
+                    </th>
 
-                <table data-toggle="table"
-                       data-query-params="queryParams"
-                       class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>
-                                Documento
-                            </th>
+                    <th>
+                        Tipo Documento
+                    </th>
+                    <th>
+                        Primer Nombre
+                    </th>
+                    <th>
+                        Segundo Nombre
+                    </th>
+                    <th>
+                        Primer Apellido
+                    </th>
+                    <th>
+                        Segundo Apellido
+                    </th>
+                    <th>
+                        Rol
+                    </th>
+                    <th>
+                        Correo
+                    </th>
+                    <th>
+                        Telefono
+                    </th>
+                    <th>
+                        Celular
+                    </th>
+                    <th>
+                        Estado
+                    </th>
 
-                            <th>
-                                Tipo Documento
-                            </th>
-                            <th>
-                                Primer Nombre
-                            </th>
-                            <th>
-                                Segundo Nombre
-                            </th>
-                            <th>
-                                Primer Apellido
-                            </th>
-                            <th>
-                                Segundo Apellido
-                            </th>
-                            <th>
-                                Rol
-                            </th>
-                            <th>
-                                Correo
-                            </th>
-                            <th>
-                                Telefono
-                            </th>
-                            <th>
-                                Celular
-                            </th>
-                            <th>
-                                Estado
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.idEmpleado)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.tipoDocumento)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.primerNombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.segundoNombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.primerApellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.segundoApellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.rol)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.telefono)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.celular)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.estado)
-                    </tr>
-                </table>
-            </div>
-        </div>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.idEmpleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.tipoDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.primerNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.segundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.primerApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.segundoApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.rol)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.estado)
+            </tr>
+        </table>
     </div>
-
+    <br />
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -103,5 +96,21 @@
             <input type="submit" value="Eliminar" class="btn btn-default" />
 
         </div>
+    }
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "searching": false,
+                    "paginate": false,
+                    "info": false,
+                    "language": {
+                        "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                    }
+                });
+            });
+        </script>
+
     }
 </div>
