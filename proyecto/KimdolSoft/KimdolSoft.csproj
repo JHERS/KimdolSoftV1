@@ -223,12 +223,14 @@
     <Compile Include="Models\detalledevolucion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\detalleDevolucionMetaData.cs" />
     <Compile Include="Models\detallemovimiento.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\devolucion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DevolucionMetaData.cs" />
     <Compile Include="Models\Devolucion_Detalle.cs" />
     <Compile Include="Models\empleado.cs">
       <DependentUpon>Model1.tt</DependentUpon>

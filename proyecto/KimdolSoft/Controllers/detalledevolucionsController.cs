@@ -14,6 +14,12 @@ namespace KimdolSoft.Controllers
     {
         private kimdolsoftEntities db = new kimdolsoftEntities();
 
+        public ActionResult prueba()
+        {
+             
+            return RedirectToAction("Index");
+        }
+
         // GET: detalledevolucions
         public ActionResult Index()
         {
@@ -57,7 +63,7 @@ namespace KimdolSoft.Controllers
             {
                 db.devolucion.Add(devolucionDetalle.devolucion);
                 db.SaveChanges();
-                devolucionDetalle.devolucion.idDevolucion = devolucionDetalle.dtDevolucion.idDevolucion;
+                devolucionDetalle.dtDevolucion.idDevolucion = devolucionDetalle.devolucion.idDevolucion;
                 db.detalledevolucion.Add(devolucionDetalle.dtDevolucion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,7 +72,7 @@ namespace KimdolSoft.Controllers
             ViewData["IdProveedorSeleccionado"] = devolucionDetalle.devolucion.idProveedor;
             ViewBag.idProveedor = db.proveedor.ToList();
             ViewBag.idProducto = db.producto.ToList();
-            return RedirectToAction("Index");
+            return View(devolucionDetalle);
         }
 
         // GET: detalledevolucions/Edit/5
@@ -81,9 +87,11 @@ namespace KimdolSoft.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idDevolucion = new SelectList(db.devolucion, "idDevolucion", "idProveedor", detalledevolucion.idDevolucion);
-            ViewBag.idProducto = new SelectList(db.producto, "idProducto", "nombre", detalledevolucion.idProducto);
-            return View(detalledevolucion);
+            ViewData["IdProductoSeleccionado"] = String.Empty;
+            ViewData["IdProveedorSeleccionado"] = String.Empty;
+            ViewBag.idProveedor = db.proveedor.ToList();
+            ViewBag.idProducto = db.producto.ToList();
+            return View(new Devolucion_Detalle() { dtDevolucion = detalledevolucion, devolucion = detalledevolucion.devolucion });
         }
 
         // POST: detalledevolucions/Edit/5
@@ -91,18 +99,35 @@ namespace KimdolSoft.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idDetalle,idProducto,idDevolucion,descripcion,cantidadADevolver,cantidadPendiente")] detalledevolucion detalledevolucion)
+        //public ActionResult Edit([Bind(Include = "idDetalle,idProducto,idDevolucion,descripcion,cantidadADevolver,cantidadPendiente")] detalledevolucion detalledevolucion)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(detalledevolucion).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.idDevolucion = new SelectList(db.devolucion, "idDevolucion", "idProveedor", detalledevolucion.idDevolucion);
+        //    ViewBag.idProducto = new SelectList(db.producto, "idProducto", "nombre", detalledevolucion.idProducto);
+        //    return View(detalledevolucion);
+        //}
+               
+        
+
+
+        public ActionResult Edit([Bind(Prefix = "devolucion")] devolucion devolucion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detalledevolucion).State = EntityState.Modified;
+                db.Entry(devolucion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idDevolucion = new SelectList(db.devolucion, "idDevolucion", "idProveedor", detalledevolucion.idDevolucion);
-            ViewBag.idProducto = new SelectList(db.producto, "idProducto", "nombre", detalledevolucion.idProducto);
-            return View(detalledevolucion);
+            ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", devolucion);
+            return View(devolucion);
         }
+
+        
 
         // GET: detalledevolucions/Delete/5
         public ActionResult Delete(int? id)
