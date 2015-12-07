@@ -82,7 +82,15 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Registrar", "Create", "productoes")</li>
                             <li>@Html.ActionLink("Consultar", "Index", "productoes")</li>
-                            <li>@Html.ActionLink("Descripciones", "CreateDescripcion", "descripcion")</li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Descripciones</b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Marca", "Index", "marcas")</li>
+                                    <li>@Html.ActionLink("Unidades", "Index", "unidads")</li>
+                                    <li>@Html.ActionLink("Presentacion", "Index", "presentacions")</li>
+                                    <li>@Html.ActionLink("Tipo Producto", "Index", "tipoproductoes")</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 

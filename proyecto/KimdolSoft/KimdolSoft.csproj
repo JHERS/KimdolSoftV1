@@ -619,11 +619,6 @@
     <Content Include="Views\presentacions\Details.cshtml" />
     <Content Include="Views\presentacions\Edit.cshtml" />
     <Content Include="Views\presentacions\Index.cshtml" />
-    <Content Include="Views\productoes\Create.cshtml" />
-    <Content Include="Views\productoes\Delete.cshtml" />
-    <Content Include="Views\productoes\Details.cshtml" />
-    <Content Include="Views\productoes\Edit.cshtml" />
-    <Content Include="Views\productoes\Index.cshtml" />
     <Content Include="Views\detallecompras\Create.cshtml" />
     <Content Include="Views\detallecompras\Delete.cshtml" />
     <Content Include="Views\detallecompras\Details.cshtml" />
@@ -634,6 +629,11 @@
     <Content Include="Views\detalledevolucions\Details.cshtml" />
     <Content Include="Views\detalledevolucions\Edit.cshtml" />
     <Content Include="Views\detalledevolucions\Index.cshtml" />
+    <Content Include="Views\productoes\Create.cshtml" />
+    <Content Include="Views\productoes\Details.cshtml" />
+    <Content Include="Views\productoes\Edit.cshtml" />
+    <Content Include="Views\productoes\Index.cshtml" />
+    <Content Include="Views\productoes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
