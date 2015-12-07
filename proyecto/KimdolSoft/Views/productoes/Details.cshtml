@@ -5,79 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>producto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+<br /><br /><br /><br /><br /><br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Información del producto </h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <table class="table table-bordered">
+                    <tr class="active">
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Valor
+                        </th>
+                        <th>
+                            Marca
+                        </th>
+                        <th>
+                            Presentación
+                        </th>
+                        <th>
+                            Tipo Producto
+                        </th>
+                        <th>
+                            Unidad
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.valor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.marca.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.presentacion.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.tipoproducto.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.unidad.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.estado)
+                        </td>
+                    </tr>
+                </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.valor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.valor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.marca.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.marca.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.presentacion.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.presentacion.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tipoproducto.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tipoproducto.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.unidad.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.unidad.nombre)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Regresar", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idProducto }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -10,59 +10,45 @@
 <p align="right">
     @Html.ActionLink("Registrar producto", "Create")
 </p>
-<div class="table-responsive">
-    <table data-toggle="table"
-           data-query-params="queryParams"
-           data-search="true">
-        <thead>
-            <tr>
-                <th>
-                    Identificador
-                </th>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Valor
-                </th>
-                <th>
-                    Marca
-                </th>
-                <th>
-                    Presentación
-                </th>
-                <th>
-                    Tipo Producto
-                </th>
-                <th>
-                    Unidad
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th>
-                    Ver
-                </th>
-                <th>
-                    Editar
-                </th>
-                <th>
-                    Eliminar
-                </th>
-            </tr>
-        </thead>
-
-       @foreach (var item in Model)
-       {
+<table id="example" class="display responsive" width="100%">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idProducto)
-            </td>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Presentación
+            </th>
+            <th>
+                Tipo Producto
+            </th>
+            <th>
+                Unidad
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Ver
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Eliminar
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.valor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.marca.nombre)
@@ -106,22 +92,29 @@
                 @*<span class="glyphicon glyphicon-remove"></span>*@
             </td>
         </tr>
-       }
+    }
 
-    </table>
-</div>
+</table>
+
 
 @section Scripts {
     <script>
-    function queryParams() {
-        return {
-            type: 'owner',
-            sort: 'updated',
-            direction: 'desc',
-            per_page: 100,
-            page: 1
-        };
-    }
+        function queryParams() {
+            return {
+                type: 'owner',
+                sort: 'updated',
+                direction: 'desc',
+                per_page: 100,
+                page: 1
+            };
+        }
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                }
+            });
+        });
     </script>
 
 }

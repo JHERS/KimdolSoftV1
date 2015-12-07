@@ -38,7 +38,6 @@ namespace KimdolSoft.Models
         public string nombre { get; set; }
 
         [Display(Name = "Descripción: ")]
-        [Required]
         [MaxLength(100)]
         public string descripcion { get; set; }
 

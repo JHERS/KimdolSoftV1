@@ -9,20 +9,19 @@ namespace KimdolSoft.Models
     public class detalleCompraMetaData
     {
         [Display(Name ="* ID Producto: ")]
-        [Required]
+        [Required (ErrorMessage = "Este campo es obligatorio")]
         public int idProducto { get; set; }
 
-        [Display(Name = "* ID Compra: ")]
-        [Required]
-        public int idCompra { get; set; }
-
         [Display(Name = "* Cantidad: ")]
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        //[Range(0, int.MaxValue, ErrorMessage = "Solo puede ingresar números")]
         public int cantidad { get; set; }
 
         [Display(Name = "* Valor Unitario: ")]
-        [Required]
-        public int valorUnitario { get; set; }       
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public int valorUnitario { get; set; }      
+        
+        
 
     }
 
