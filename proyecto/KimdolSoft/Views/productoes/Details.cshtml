@@ -13,61 +13,80 @@
         <div class="panel-heading">
             <h3 class="panel-title"> Información del producto </h3>
         </div>
-        <div class="panel-body">
-            <div>
-                <table class="table table-bordered">
-                    <tr class="active">
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Valor
-                        </th>
-                        <th>
-                            Marca
-                        </th>
-                        <th>
-                            Presentación
-                        </th>
-                        <th>
-                            Tipo Producto
-                        </th>
-                        <th>
-                            Unidad
-                        </th>
-                        <th>
-                            Estado
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.valor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.marca.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.presentacion.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.tipoproducto.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.unidad.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.estado)
-                        </td>
-                    </tr>
-                </table>
 
-            </div>
-        </div>
+        <table id="example" class="display responsive" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        Presentación
+                    </th>
+                    <th>
+                        Tipo Producto
+                    </th>
+                    <th>
+                        Unidad
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                </tr>
+            </thead>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.marca.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.presentacion.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.tipoproducto.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.unidad.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.estado)
+                    </td>
+                </tr>
+       
+        </table>
+
     </div>
+
     <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idProducto })<br />
         @Html.ActionLink("Regresar", "Index")
     </p>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "searching": false,
+                "paginate": false,
+                "info": false,
+                "language": {
+                    "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                }
+
+
+            });
+
+        });
+    </script>
 </div>

@@ -25,14 +25,14 @@
 
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.idPresentacion,htmlAttributes: new { @class = "control-label col-xs-2" })
+                        @Html.LabelFor(model => model.idPresentacion, htmlAttributes: new { @class = "control-label col-xs-2" })
                         <div class="col-xs-4">
-                            @Html.DropDownList("idPresentacion", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.idPresentacion, new SelectList(ViewBag.idPresentacion, "idPresentacion", "nombre"), ViewData["IdPresentacionSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.idPresentacion, "", new { @class = "text-danger" })
                         </div>
                         @Html.LabelFor(model => model.idTipoProducto, htmlAttributes: new { @class = "control-label col-xs-2" })
                         <div class="col-xs-4">
-                            @Html.DropDownList("idTipoProducto", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.idTipoProducto, new SelectList(ViewBag.idTipoProducto, "idTipoProducto", "nombre"), ViewData["IdTipoProductoSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.idTipoProducto, "", new { @class = "text-danger" })
                         </div>
 
@@ -41,12 +41,12 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.idMarca, htmlAttributes: new { @class = "control-label col-xs-2" })
                         <div class="col-xs-4">
-                            @Html.DropDownList("idMarca", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.idMarca, new SelectList(ViewBag.idMarca, "idMarca", "nombre"), ViewData["IdMarcaSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.idMarca, "", new { @class = "text-danger" })
                         </div>
                         @Html.LabelFor(model => model.idUnidad, htmlAttributes: new { @class = "control-label col-xs-2" })
                         <div class="col-xs-4">
-                            @Html.DropDownList("idUnidad", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.idUnidad, new SelectList(ViewBag.idUnidad, "idUnidad", "nombre"), ViewData["IdUnidadSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.idUnidad, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -61,7 +61,6 @@
                         <div class="col-xs-4">
                             @Html.DropDownListFor(model => model.estado,
                                 new List<SelectListItem> {
-                                new SelectListItem { Text=""},
                                 new SelectListItem { Text="ACTIVO"},
                                 new SelectListItem { Text="INACTIVO"}
                                 },

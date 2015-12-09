@@ -591,11 +591,6 @@
     <Content Include="Views\clientes\Details.cshtml" />
     <Content Include="Views\clientes\Edit.cshtml" />
     <Content Include="Views\clientes\Index.cshtml" />
-    <Content Include="Views\compras\Create.cshtml" />
-    <Content Include="Views\compras\Delete.cshtml" />
-    <Content Include="Views\compras\Details.cshtml" />
-    <Content Include="Views\compras\Edit.cshtml" />
-    <Content Include="Views\compras\Index.cshtml" />
     <Content Include="Views\movimientoes\Create.cshtml" />
     <Content Include="Views\movimientoes\Delete.cshtml" />
     <Content Include="Views\movimientoes\Details.cshtml" />

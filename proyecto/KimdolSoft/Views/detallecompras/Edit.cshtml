@@ -37,9 +37,11 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.compra.idProveedor, htmlAttributes: new { @class = "control-label col-xs-2" })
                                         <div class="col-xs-4">
-                                            @Html.DropDownListFor(model => model.compra.idProveedor, new SelectList(ViewBag.idProveedor, "idProveedor", "empresa"), ViewData["IdProveedorSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control", Enabled = false })
 
-                                            @Html.ValidationMessageFor(model => model.compra.idProveedor, "", new { @class = "text-danger", Enabled = false })
+                                            @Html.HiddenFor(model => model.compra.idProveedor)
+
+                                            @Html.Label(Model.compra.proveedor.empresa)
+
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +104,13 @@
                                             @Html.LabelFor(model => model.dtcompra.idProducto, "* Producto", htmlAttributes: new { @class = "control-label col-md-4" })
 
                                             <div class="col-md-8">
-                                                @Html.DropDownListFor(model => model.dtcompra.idProducto, new SelectList(ViewBag.idProducto, "idProducto", "nombre"), ViewData["IdProductoSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+
+                                                @Html.HiddenFor(model => model.dtcompra.idProducto)
+                                                @Html.Label(Model.dtcompra.producto.nombre)
+
+                                                @*@Html.DropDownListFor(model => model.dtcompra.idProducto, new SelectList(ViewBag.idProducto, "idProducto", "nombre"), ViewData["IdProductoSeleccionado"].ToString(), htmlAttributes: new { @class = "form-control", @readonly = "readonly" })*@
+
+
                                                 @Html.ValidationMessageFor(model => model.dtcompra.idProducto, "", new { @class = "text-danger", @readonly = "readonly" })
                                             </div>
 

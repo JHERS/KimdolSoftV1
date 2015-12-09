@@ -25,13 +25,15 @@
         <table id="example" class="display responsive" width="100%">
             <thead>
                 <tr>
+                    <th> Código Compra</th>
                     <th> NIT - Documento</th>
                     <th> Proveedor</th>
                     <th>Fecha Compra</th>
                     <th>Estado</th>
                     <th>Ver</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Anular</th>
+                    @*<th>Eliminar</th>*@
+                    
                 </tr>
 
             </thead>
@@ -39,6 +41,9 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.compra.idCompra)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.compra.idProveedor)
                     </td>
@@ -57,18 +62,28 @@
                             <span class="sr-only"></span>
                         </a>
                     </td>
-                    <td>
-                        <a href="@Url.Action("Edit", new { id = item.idDetalle})">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                            <span class="sr-only"></span>
-                        </a>
-                    </td>
-                    <td>
+                    @if (item.compra.estado == "ENTREGADA")
+                    {
+                        <td>
+                            <a href="@Url.Action("Anular", new { id = item.idCompra })">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+                        </td>
+                    }
+                    else if (item.compra.estado == "ANULADA")
+                    {
+                        <td>
+                            <label>@item.compra.estado</label>
+                        </td>
+                    }
+
+
+                    @*<td>
                         <a href="@Url.Action("Delete", new { id = item.idDetalle})">
                             <i class="glyphicon glyphicon-remove"></i>
                             <span class="sr-only"></span>
                         </a>
-                    </td>
+                    </td>*@
                 </tr>
             }
 

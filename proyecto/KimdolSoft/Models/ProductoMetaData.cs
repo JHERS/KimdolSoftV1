@@ -9,31 +9,32 @@ namespace KimdolSoft.Models
     public class ProductoMetaData
     {
         [Display(Name = "* Presentación: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public int idPresentacion { get; set; }
 
         [Display(Name = "* Tipo de producto: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public int idTipoProducto { get; set; }
 
         [Display(Name = "* Marca: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public int idMarca { get; set; }
 
         [Display(Name = "* Unidad: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public int idUnidad { get; set; }
 
         [Display(Name = "* Valor: ")]
-        [Required]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Solo puede ingresar números")]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public int valor { get; set; }
 
         [Display(Name = "  Estado: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         public string estado { get; set; }
 
         [Display(Name = "* Nombre: ")]
-        [Required]
+        [Required(ErrorMessage = "    Este campo es obligatorio")]
         [MaxLength(20)]
         public string nombre { get; set; }
 

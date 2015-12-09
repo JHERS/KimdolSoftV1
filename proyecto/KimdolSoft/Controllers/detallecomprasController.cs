@@ -19,7 +19,7 @@ namespace KimdolSoft.Controllers
         {
             var Mensaje = TempData["Message"];
             ViewBag.mensaje = Mensaje;
-            var detallecompra = db.detallecompra.Include(d => d.compra).Include(d => d.producto);
+            var detallecompra = db.detallecompra.Include(d => d.compra).Include(d => d.producto).OrderByDescending(x => x.idCompra);
             return View(detallecompra.ToList());
         }
 
@@ -128,6 +128,26 @@ namespace KimdolSoft.Controllers
             }
             ViewBag.idProveedor = new SelectList(db.proveedor, "idProveedor", "idProveedor", compraDetalle);
             return View(compraDetalle);
+        }
+
+        public ActionResult Anular(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            compra compra = db.compra.Find(id);
+            if (compra == null)
+            {
+                return HttpNotFound();
+            }
+
+            compra.estado = "ANULADA";
+
+            db.Entry(compra).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
 

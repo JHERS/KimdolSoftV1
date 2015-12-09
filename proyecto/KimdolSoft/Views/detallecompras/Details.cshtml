@@ -14,83 +14,111 @@
         <div class="panel-heading">
             <h3 class="panel-title"> Información de la compra </h3>
         </div>
-        <div class="panel-body">
-            <div>
 
-                <table class="table table-bordered">
-                    <tr class="active">
-                        <th>
-                            NIT - Documento
-                        </th>
+        <table id="example" class="display responsive" width="100%">
+            <thead>
+                <tr class="active">
+                    <th>
+                        NIT - Documento
+                    </th>
 
-                        <th>
-                            Empresa
-                        </th>
-                        <th>
-                            Fecha compra
-                        </th>
-                        <th>
-                            Valor compra
-                        </th>
-                        <th>
-                            Descuento
-                        </th>
-                        <th>
-                            Estado
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.idProveedor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.proveedor.empresa)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.fechaCompra)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.valorCompra)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.descuento)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.compra.estado)
-                        </td>
-                    </tr>
-                </table>
+                    <th>
+                        Empresa
+                    </th>
+                    <th>
+                        Fecha compra
+                    </th>
+                    <th>
+                        Valor compra
+                    </th>
+                    <th>
+                        Descuento
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.compra.idProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.compra.proveedor.empresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.compra.fechaCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.compra.valorCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.compra.descuento)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.compra.estado)
+                </td>
+            </tr>
+        </table>
 
-                <table class="table table-bordered">
-                    <tr class="active">
-                        <th>
-                            Producto
-                        </th>
+        <br /><br />
 
-                        <th>
-                            Cantidad
-                        </th>
-                        <th>
-                            Valor unitario
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => model.producto.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.cantidad)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.valorUnitario)
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        <table id="example2" class="display responsive" width="100%">
+            <thead>
+                <tr class="active">
+                    <th>
+                        Producto
+                    </th>
+
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Valor unitario
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.producto.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.valorUnitario)
+                </td>
+            </tr>
+        </table>
     </div>
+
     <p>
         @Html.ActionLink("Regresar", "Index")
     </p>
-</div>
 
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "searching": false,
+                "paginate": false,
+                "info": false,
+                "language": {
+                    "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                }
+
+
+            });
+            $('#example2').DataTable({
+                "searching": false,
+                "paginate": false,
+                "info": false,
+                "language": {
+                    "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+            }
+
+
+        });
+
+        });
+    </script>
+</div>

@@ -14,6 +14,7 @@ namespace KimdolSoft.Models
 
         [Display(Name = "* Cantidad: ")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Solo puede ingresar números")]
         //[Range(0, int.MaxValue, ErrorMessage = "Solo puede ingresar números")]
         public int cantidad { get; set; }
 

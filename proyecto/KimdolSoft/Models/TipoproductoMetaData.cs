@@ -10,17 +10,16 @@ namespace KimdolSoft.Models
     {
 
         [Display(Name = "* ID Tipo Producto: ")]
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(20)]
         public int idTipoProducto { get; set; }
 
         [Display(Name = "* Nombre: ")]
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(20)]
         public string nombre { get; set; }
 
         [Display(Name = "Descripciones: ")]
-        [Required]
         [MaxLength(20)]
         public string descripcion { get; set; }
     }

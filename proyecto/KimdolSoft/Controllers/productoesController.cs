@@ -39,10 +39,19 @@ namespace KimdolSoft.Controllers
         // GET: productoes/Create
         public ActionResult Create()
         {
-            ViewBag.idMarca = new SelectList(db.marca, "idMarca", "nombre");
-            ViewBag.idPresentacion = new SelectList(db.presentacion, "idPresentacion", "nombre");
-            ViewBag.idTipoProducto = new SelectList(db.tipoproducto, "idTipoProducto", "nombre");
-            ViewBag.idUnidad = new SelectList(db.unidad, "idUnidad", "nombre");
+            //ViewBag.idTipoProducto = new SelectList(db.tipoproducto, "idTipoProducto", "nombre");
+            //ViewBag.idUnidad = new SelectList(db.unidad, "idUnidad", "nombre");
+            //ViewBag.idMarca = new SelectList(db.marca, "idMarca", "nombre");
+            //ViewBag.idPresentacion = new SelectList(db.presentacion, "idPresentacion", "nombre");
+            ViewData["IdPresentacionSeleccionado"] = String.Empty;
+            ViewBag.idPresentacion = db.presentacion.ToList();
+            ViewData["IdTipoProductoSeleccionado"] = String.Empty;
+            ViewBag.idTipoProducto = db.tipoproducto.ToList();
+            ViewData["IdUnidadSeleccionado"] = String.Empty;
+            ViewBag.idUnidad = db.unidad.ToList();
+            ViewData["IdMarcaSeleccionado"] = String.Empty;
+            ViewBag.idMarca = db.marca.ToList();
+
             return View();
         }
 
@@ -60,10 +69,24 @@ namespace KimdolSoft.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idMarca = new SelectList(db.marca, "idMarca", "nombre", producto.idMarca);
-            ViewBag.idPresentacion = new SelectList(db.presentacion, "idPresentacion", "nombre", producto.idPresentacion);
-            ViewBag.idTipoProducto = new SelectList(db.tipoproducto, "idTipoProducto", "nombre", producto.idTipoProducto);
-            ViewBag.idUnidad = new SelectList(db.unidad, "idUnidad", "nombre", producto.idUnidad);
+            //ViewBag.idMarca = new SelectList(db.marca, "idMarca", "nombre", producto.idMarca);
+            //ViewBag.idPresentacion = new SelectList(db.presentacion, "idPresentacion", "nombre", producto.idPresentacion);
+            //ViewBag.idTipoProducto = new SelectList(db.tipoproducto, "idTipoProducto", "nombre", producto.idTipoProducto);
+            //ViewBag.idUnidad = new SelectList(db.unidad, "idUnidad", "nombre", producto.idUnidad);
+            //
+
+            ViewData["IdPresentacionSeleccionado"] = producto.idPresentacion;
+            ViewBag.idPresentacion = db.presentacion.ToList();
+
+            ViewData["IdTipoProductoSeleccionado"] = producto.idTipoProducto;
+            ViewBag.idTipoProducto = db.tipoproducto.ToList();
+
+            ViewData["IdUnidadSeleccionado"] = producto.idUnidad;
+            ViewBag.idUnidad = db.unidad.ToList();
+
+            ViewData["IdMarcaSeleccionado"] = producto.idMarca;
+            ViewBag.idMarca = db.marca.ToList();
+
             return View(producto);
         }
 
