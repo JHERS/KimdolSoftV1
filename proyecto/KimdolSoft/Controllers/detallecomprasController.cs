@@ -23,6 +23,8 @@ namespace KimdolSoft.Controllers
             return View(detallecompra.ToList());
         }
 
+        
+
         // GET: detallecompras/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,13 +40,24 @@ namespace KimdolSoft.Controllers
             return View(detallecompra);
         }
 
+        private readonly kimdolsoftEntities context = new kimdolsoftEntities();
+
         // GET: detallecompras/Create
         public ActionResult Create()
         {
+            
+            var proveedorActivo = from prov in context.proveedor
+                                  where prov.estado == "activo"
+                                  select prov;
+
+            var productoActivo = from prod in context.producto
+                                 where prod.estado == "activo"
+                                 select prod;
+
             ViewData["IdProductoSeleccionado"] = String.Empty;
             ViewData["IdProveedorSeleccionado"] = String.Empty;
-            ViewBag.idProveedor = db.proveedor.ToList();
-            ViewBag.idProducto = db.producto.ToList();
+            ViewBag.idProveedor = proveedorActivo.ToList();
+            ViewBag.idProducto = productoActivo.ToList();
             return View();
         }
 

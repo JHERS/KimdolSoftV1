@@ -12,6 +12,8 @@ namespace KimdolSoft.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class kimdolsoftEntities : DbContext
     {
@@ -48,5 +50,451 @@ namespace KimdolSoft.Models
         public virtual DbSet<tipomovimiento> tipomovimiento { get; set; }
         public virtual DbSet<tipoproducto> tipoproducto { get; set; }
         public virtual DbSet<unidad> unidad { get; set; }
+    
+        public virtual ObjectResult<string> SP_ProveedoresActivos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_ProveedoresActivos");
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual int spCambiarContrasena(string contraAnti, string contraNueva, string id)
+        {
+            var contraAntiParameter = contraAnti != null ?
+                new ObjectParameter("contraAnti", contraAnti) :
+                new ObjectParameter("contraAnti", typeof(string));
+    
+            var contraNuevaParameter = contraNueva != null ?
+                new ObjectParameter("contraNueva", contraNueva) :
+                new ObjectParameter("contraNueva", typeof(string));
+    
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCambiarContrasena", contraAntiParameter, contraNuevaParameter, idParameter);
+        }
+    
+        public virtual int spInsertUpdateContacto(string id, string tid, string pnom, string snom, string prap, string seap, string cel, string email, string idpr)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            var tidParameter = tid != null ?
+                new ObjectParameter("tid", tid) :
+                new ObjectParameter("tid", typeof(string));
+    
+            var pnomParameter = pnom != null ?
+                new ObjectParameter("pnom", pnom) :
+                new ObjectParameter("pnom", typeof(string));
+    
+            var snomParameter = snom != null ?
+                new ObjectParameter("snom", snom) :
+                new ObjectParameter("snom", typeof(string));
+    
+            var prapParameter = prap != null ?
+                new ObjectParameter("prap", prap) :
+                new ObjectParameter("prap", typeof(string));
+    
+            var seapParameter = seap != null ?
+                new ObjectParameter("seap", seap) :
+                new ObjectParameter("seap", typeof(string));
+    
+            var celParameter = cel != null ?
+                new ObjectParameter("cel", cel) :
+                new ObjectParameter("cel", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var idprParameter = idpr != null ?
+                new ObjectParameter("idpr", idpr) :
+                new ObjectParameter("idpr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUpdateContacto", idParameter, tidParameter, pnomParameter, snomParameter, prapParameter, seapParameter, celParameter, emailParameter, idprParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateDetalleDevolucion(Nullable<int> idp, Nullable<int> idd, string des, Nullable<short> cantde, Nullable<short> cantpe, Nullable<int> idDetalle)
+        {
+            var idpParameter = idp.HasValue ?
+                new ObjectParameter("idp", idp) :
+                new ObjectParameter("idp", typeof(int));
+    
+            var iddParameter = idd.HasValue ?
+                new ObjectParameter("idd", idd) :
+                new ObjectParameter("idd", typeof(int));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            var cantdeParameter = cantde.HasValue ?
+                new ObjectParameter("cantde", cantde) :
+                new ObjectParameter("cantde", typeof(short));
+    
+            var cantpeParameter = cantpe.HasValue ?
+                new ObjectParameter("cantpe", cantpe) :
+                new ObjectParameter("cantpe", typeof(short));
+    
+            var idDetalleParameter = idDetalle.HasValue ?
+                new ObjectParameter("idDetalle", idDetalle) :
+                new ObjectParameter("idDetalle", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateDetalleDevolucion", idpParameter, iddParameter, desParameter, cantdeParameter, cantpeParameter, idDetalleParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateDevolucion(Nullable<System.DateTime> fec, string idp, string est, Nullable<int> id)
+        {
+            var fecParameter = fec.HasValue ?
+                new ObjectParameter("fec", fec) :
+                new ObjectParameter("fec", typeof(System.DateTime));
+    
+            var idpParameter = idp != null ?
+                new ObjectParameter("idp", idp) :
+                new ObjectParameter("idp", typeof(string));
+    
+            var estParameter = est != null ?
+                new ObjectParameter("est", est) :
+                new ObjectParameter("est", typeof(string));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateDevolucion", fecParameter, idpParameter, estParameter, idParameter);
+        }
+    
+        public virtual int spInsertUpdateEmpleado(Nullable<short> idCu, string nomUsu, string contra, string pre, string res, string idEm, string tipoDoc, string priNom, string segNom, string priApe, string segApe, string rol, string dir, string email, string tel, string cel, string est)
+        {
+            var idCuParameter = idCu.HasValue ?
+                new ObjectParameter("idCu", idCu) :
+                new ObjectParameter("idCu", typeof(short));
+    
+            var nomUsuParameter = nomUsu != null ?
+                new ObjectParameter("nomUsu", nomUsu) :
+                new ObjectParameter("nomUsu", typeof(string));
+    
+            var contraParameter = contra != null ?
+                new ObjectParameter("contra", contra) :
+                new ObjectParameter("contra", typeof(string));
+    
+            var preParameter = pre != null ?
+                new ObjectParameter("pre", pre) :
+                new ObjectParameter("pre", typeof(string));
+    
+            var resParameter = res != null ?
+                new ObjectParameter("res", res) :
+                new ObjectParameter("res", typeof(string));
+    
+            var idEmParameter = idEm != null ?
+                new ObjectParameter("idEm", idEm) :
+                new ObjectParameter("idEm", typeof(string));
+    
+            var tipoDocParameter = tipoDoc != null ?
+                new ObjectParameter("tipoDoc", tipoDoc) :
+                new ObjectParameter("tipoDoc", typeof(string));
+    
+            var priNomParameter = priNom != null ?
+                new ObjectParameter("priNom", priNom) :
+                new ObjectParameter("priNom", typeof(string));
+    
+            var segNomParameter = segNom != null ?
+                new ObjectParameter("segNom", segNom) :
+                new ObjectParameter("segNom", typeof(string));
+    
+            var priApeParameter = priApe != null ?
+                new ObjectParameter("priApe", priApe) :
+                new ObjectParameter("priApe", typeof(string));
+    
+            var segApeParameter = segApe != null ?
+                new ObjectParameter("segApe", segApe) :
+                new ObjectParameter("segApe", typeof(string));
+    
+            var rolParameter = rol != null ?
+                new ObjectParameter("rol", rol) :
+                new ObjectParameter("rol", typeof(string));
+    
+            var dirParameter = dir != null ?
+                new ObjectParameter("dir", dir) :
+                new ObjectParameter("dir", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var telParameter = tel != null ?
+                new ObjectParameter("tel", tel) :
+                new ObjectParameter("tel", typeof(string));
+    
+            var celParameter = cel != null ?
+                new ObjectParameter("cel", cel) :
+                new ObjectParameter("cel", typeof(string));
+    
+            var estParameter = est != null ?
+                new ObjectParameter("est", est) :
+                new ObjectParameter("est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUpdateEmpleado", idCuParameter, nomUsuParameter, contraParameter, preParameter, resParameter, idEmParameter, tipoDocParameter, priNomParameter, segNomParameter, priApeParameter, segApeParameter, rolParameter, dirParameter, emailParameter, telParameter, celParameter, estParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateMarca(string nom, string des)
+        {
+            var nomParameter = nom != null ?
+                new ObjectParameter("nom", nom) :
+                new ObjectParameter("nom", typeof(string));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateMarca", nomParameter, desParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdatePresentacion(string nom, string des)
+        {
+            var nomParameter = nom != null ?
+                new ObjectParameter("nom", nom) :
+                new ObjectParameter("nom", typeof(string));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdatePresentacion", nomParameter, desParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateProducto(string nom, Nullable<int> val, string des, Nullable<short> idp, Nullable<short> idtp, Nullable<short> idm, Nullable<short> idu, string est)
+        {
+            var nomParameter = nom != null ?
+                new ObjectParameter("nom", nom) :
+                new ObjectParameter("nom", typeof(string));
+    
+            var valParameter = val.HasValue ?
+                new ObjectParameter("val", val) :
+                new ObjectParameter("val", typeof(int));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            var idpParameter = idp.HasValue ?
+                new ObjectParameter("idp", idp) :
+                new ObjectParameter("idp", typeof(short));
+    
+            var idtpParameter = idtp.HasValue ?
+                new ObjectParameter("idtp", idtp) :
+                new ObjectParameter("idtp", typeof(short));
+    
+            var idmParameter = idm.HasValue ?
+                new ObjectParameter("idm", idm) :
+                new ObjectParameter("idm", typeof(short));
+    
+            var iduParameter = idu.HasValue ?
+                new ObjectParameter("idu", idu) :
+                new ObjectParameter("idu", typeof(short));
+    
+            var estParameter = est != null ?
+                new ObjectParameter("est", est) :
+                new ObjectParameter("est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateProducto", nomParameter, valParameter, desParameter, idpParameter, idtpParameter, idmParameter, iduParameter, estParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateProveedor(string id, string tdoc, string emp, string dir, string email, string tel, string est)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            var tdocParameter = tdoc != null ?
+                new ObjectParameter("tdoc", tdoc) :
+                new ObjectParameter("tdoc", typeof(string));
+    
+            var empParameter = emp != null ?
+                new ObjectParameter("emp", emp) :
+                new ObjectParameter("emp", typeof(string));
+    
+            var dirParameter = dir != null ?
+                new ObjectParameter("dir", dir) :
+                new ObjectParameter("dir", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var telParameter = tel != null ?
+                new ObjectParameter("tel", tel) :
+                new ObjectParameter("tel", typeof(string));
+    
+            var estParameter = est != null ?
+                new ObjectParameter("est", est) :
+                new ObjectParameter("est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateProveedor", idParameter, tdocParameter, empParameter, dirParameter, emailParameter, telParameter, estParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateTipoProducto(string nom, string des)
+        {
+            var nomParameter = nom != null ?
+                new ObjectParameter("nom", nom) :
+                new ObjectParameter("nom", typeof(string));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateTipoProducto", nomParameter, desParameter);
+        }
+    
+        public virtual ObjectResult<string> spInsertUpdateUnidad(string nom, string des)
+        {
+            var nomParameter = nom != null ?
+                new ObjectParameter("nom", nom) :
+                new ObjectParameter("nom", typeof(string));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spInsertUpdateUnidad", nomParameter, desParameter);
+        }
+    
+        public virtual int spNuevaContrasena(string id, string contra)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            var contraParameter = contra != null ?
+                new ObjectParameter("contra", contra) :
+                new ObjectParameter("contra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spNuevaContrasena", idParameter, contraParameter);
+        }
+    
+        public virtual int spSelectPreguntaRespuestaSeguridad(string idEm)
+        {
+            var idEmParameter = idEm != null ?
+                new ObjectParameter("idEm", idEm) :
+                new ObjectParameter("idEm", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSelectPreguntaRespuestaSeguridad", idEmParameter);
+        }
+    
+        public virtual int spVerificarLogin(string usuario, string contra)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("usuario", usuario) :
+                new ObjectParameter("usuario", typeof(string));
+    
+            var contraParameter = contra != null ?
+                new ObjectParameter("contra", contra) :
+                new ObjectParameter("contra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spVerificarLogin", usuarioParameter, contraParameter);
+        }
     }
 }
