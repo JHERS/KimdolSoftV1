@@ -37,9 +37,9 @@
             <th>
                 Editar
             </th>
-            <th>
+            @*<th>
                 Eliminar
-            </th>
+            </th>*@
         </tr>
     </thead>
 
@@ -84,10 +84,10 @@
                 @*<span class="glyphicon glyphicon-pencil"></span>*@
             </td>
             <td>
-                <a href="@Url.Action("Delete", new { id = item.idProducto})">
+                @*<a href="@Url.Action("Delete", new { id = item.idProducto})">
                     <i class="glyphicon glyphicon-remove"></i>
                     <span class="sr-only"></span>
-                </a>
+                </a>*@
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.idProducto })*@
                 @*<span class="glyphicon glyphicon-remove"></span>*@
             </td>
