@@ -17,9 +17,7 @@
         <div class="panel-body">
             <div>
 
-                <table data-toggle="table"
-                       data-query-params="queryParams"
-                       class="table table-hover">
+                <table id="example" class="display responsive" width="100%">
                     <thead>
                         <tr class="active">
                             <th>
@@ -112,5 +110,20 @@
         @Html.ActionLink("Editar", "Edit", new { id = Model.idCliente }) |
         @Html.ActionLink("Regresar", "Index")
     </p>
+    <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "searching": false,
+                    "paginate": false,
+                    "info": false,
+                    "language": {
+                        "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                    }
+
+
+                });
+
+            });
+    </script>
 </div>
 
