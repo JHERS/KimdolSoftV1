@@ -26,14 +26,11 @@
 
             @Html.ActionLink("Registrar Cliente", "Create")
         </p>
-        <table data-toggle="table"
-               data-query-params="queryParams"
-               data-search="true"
-               class="table table-hover">
+        <table id="example" class="display responsive" width="100%">
             <thead>
                 <tr class="active">
                     <th data-sortable="true">
-                       ID
+                        ID
                     </th>
                     <th data-sortable="true">
                         Primer Nombre
@@ -105,14 +102,14 @@
                         @*@Html.ActionLink("Edit", "Edit", new { id = item.idCliente })*@
                         @*<span class="glyphicon glyphicon-pencil"></span>*@
                     </td>
-                    <td>
+                    @*<td>
                         <a href="@Url.Action("Delete", new { id = item.idCliente})">
                             <i class="glyphicon glyphicon-remove"></i>
                             <span class="sr-only"></span>
                         </a>
-                        @*@Html.ActionLink("Delete", "Delete", new { id = item.idCliente })*@
-                        @*<span class="glyphicon glyphicon-remove"></span>*@
-                    </td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.idCliente })
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </td>*@
                 </tr>
             }
 
@@ -121,15 +118,13 @@
 </div>
 @section Scripts {
     <script>
-        function queryParams() {
-            return {
-                type: 'owner',
-                sort: 'updated',
-                direction: 'desc',
-                per_page: 100,
-                page: 1
-            };
-        }
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "language": {
+                        "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                    }
+                });
+            });
     </script>
 
 }

@@ -1,23 +1,21 @@
-﻿@model KimdolSoft.Models.cliente
+﻿@*@model KimdolSoft.Models.cliente
 
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+}*@
 
 <br /><br /><br /><br /><br /><br /><br />
 
-<div class="container">
+@*<div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"> Eliminar cliente </h3>
         </div>
         <div class="panel-body">
             <div>
-                <table data-toggle="table"
-                       data-query-params="queryParams"
-                       class="table table-hover">
+                <table id="example" class="display responsive" width="100%">
                     <thead>
                         <tr class="active">
                             <th>
@@ -119,5 +117,21 @@
     <div>
         @Html.ActionLink("Regresar", "Index")
     </div>
-</div>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "searching": false,
+                    "paginate": false,
+                    "info": false,
+                    "language": {
+                        "url": "@Url.Content("~/Scripts/DataTables/lenguaje.json")"
+                    }
+                });
+            });
+        </script>
+
+    }
+</div>*@
 
